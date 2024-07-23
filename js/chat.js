@@ -1,43 +1,39 @@
+const aiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=AIzaSyBqBkg5sq7cWVX7w6oq32jMRYYPm5oWuyA`;
+
+async function getResponse(prompt = "hello") {
+   try {
+      const response = await fetch(aiUrl, {
+         method: "POST",
+         body: JSON.stringify({
+            contents: [{ parts: [{ text: prompt }] }],
+         }),
+      });
+      const modelResponse = await response.json();
+
+      appendMessage("model", modelResponse);
+   } catch (error) {
+      console.error("Error:", error);
+   }
+}
+
 function appendMessage(sender, text) {
    console.log(sender, text);
 
    // element . scrollTop = element . scrollHeight;
 }
 
-async function getResponse(prompt) {
-   const options = {
-      method: "POST",
-      headers: {
-         Authorization: `Bearer ${GPT_API_KEY}`,
-         "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-         model: "gpt-3.5-turbo",
-         messages: [{ role: "user", content: prompt }],
-         max_tokens: 200,
-      }),
-   };
-
-   const response = await fetch("https://api.openai.com/v1/chat/completions", options);
-
-   const data = await response.json();
-   return data.choices[0].text.trim();
-}
-
-const sendRequest = async (message = "hello") => {
+const sendRequest = async (message = "hi their") => {
    // const userMessage = userInput.value.trim();
-
    // if (userMessage) {
-   appendMessage("user", message);
-   // userInput.value = "";
-
-   const botResponse = await getResponse(message);
-   appendMessage("bot", botResponse);
+   // appendMessage("user", message);
+   // // userInput.value = "";
+   // const botResponse = await getResponse(message);
+   // appendMessage("bot", botResponse);
    // }
 };
 
 sendButton.addEventListener("click", () => {
-   sendRequest();
+   getResponse();
 });
 
 // userInput.addEventListener("keypress", (e) => {
