@@ -1,48 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Neo</title>
-
-   <!-- ===============================================================
-                              CSS Stylesheets  
-   ================================================================= -->
-   <link rel="stylesheet" href="./css/global.css">
-   <link rel="stylesheet" href="./css/hero.css">
-   <link rel="stylesheet" href="./css/nav.css">
-   <link rel="stylesheet" href="./css/input.css">
-   <link rel="stylesheet" href="./css/chat.css">
-
-   <!-- ===============================================================
-                                 JavaScript  
-   ================================================================= -->
-   <script defer src="./js/utils.js"></script>
-   <script defer src="./js/global.js"></script>
-   <script defer src="./js/config.js"></script>
-   <script defer src="./js/voice.js"></script>
-   <script defer src="./js/chat.js"></script>
-   <script defer src="./js/apiRequest.js"></script>
-   <script defer src="./js/event.js"></script>
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ChatBot</title>
+  <link rel="stylesheet" href="./icons/css/icon.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-   <!-- ===============================================================
-                              Hero Section  
-   ================================================================= -->
-
-   <!-- ===============================================================
-                              Navigation Section  
-   ================================================================= -->
-   
-   <!-- ===============================================================
-                              Chat Section  
-   ================================================================= -->
-   <button id="sendButton">send</button>
-
-   <!-- ===============================================================
-                              Input Section  
-   ================================================================= -->
-
+  <header>
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <img src="" alt="logo">
+        <h2>charlar</h2>
+      </div>
+      <h4 class="sidebar-history">
+        <span>Conversation History</span>
+    </h4>
+      <ul class="sidebar-links">
+        <li>
+          <a href="#"><i class="sbi-list3"></i><span>Conversation</span><i class="sbi-delete-forever"></i></a>
+        </li>
+        <li>
+          <a href="#"><i class="sbi-list3"></i><span>Conversation</span><i class="sbi-delete-forever"></i></a>
+        </li>
+        <li>
+          <a href="#"><i class="sbi-list3"></i><span>Conversation</span><i class="sbi-delete-forever"></i></a>
+        </li>
+        <li>
+          <a href="#"><i class="sbi-list3"></i><span>Conversation</span><i class="sbi-delete-forever"></i></a>
+        </li>
+        <li>
+          <a href="#"><i class="sbi-list3"></i><span>Conversation</span><i class="sbi-delete-forever"></i></a>
+        </li>
+      </ul>
+    </aside>
+  </header>
+  <main>
+    <section id="home" class="show-chatbot">
+      <!-- <button class="chatbot-toggler">
+        <span><i class="sbi-probot"></i></span>
+        <span><i class="sbi-times"></i></span>
+      </button> -->
+      <div class="chatbot">
+        <header>
+          <h2>charlar</h2>
+          <span><i class="sbi-times"></i></span>
+        </header>
+        <ul class="chatbox">
+          <li class="chat incoming">
+            <span><i class="sbi-probot"></i></span>
+            <p>Hi there <br>How can i help you today?</p>
+          </li>
+          <li class="chat outgoing">
+            <p>Lorem ipsum dolor sit amet consectetur </p>
+          </li>
+        </ul>
+        <div class="chat-input">
+          <button class="voice-input">
+            <span>
+              <i class="sbi-microphone"></i>
+            </span>
+          </button>
+          <textarea placeholder="Enter a message.." required></textarea>
+          <span><i class="sbi-send1"></i></span>
+        </div>
+      </div>
+    </section>
+  </main>
 </body>
 </html>
