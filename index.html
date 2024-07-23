@@ -1,48 +1,152 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Neo</title>
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" type="image/png" href="./src/icon.png" />
+      <title>Neo</title>
 
-   <!-- ===============================================================
+      <!-- ===============================================================
                               CSS Stylesheets  
    ================================================================= -->
-   <link rel="stylesheet" href="./css/global.css">
-   <link rel="stylesheet" href="./css/hero.css">
-   <link rel="stylesheet" href="./css/nav.css">
-   <link rel="stylesheet" href="./css/input.css">
-   <link rel="stylesheet" href="./css/chat.css">
+      <link rel="stylesheet" href="./icons/css/icon.css" />
+      <link rel="stylesheet" href="./icons/css/font.css" />
+      <link rel="stylesheet" href="./css/global.css" />
+      <link rel="stylesheet" href="./css/hero.css" />
+      <link rel="stylesheet" href="./css/nav.css" />
+      <link rel="stylesheet" href="./css/input.css" />
+      <link rel="stylesheet" href="./css/chat.css" />
 
-   <!-- ===============================================================
+      <!-- ===============================================================
                                  JavaScript  
    ================================================================= -->
-   <script defer src="./js/utils.js"></script>
-   <script defer src="./js/global.js"></script>
-   <script defer src="./js/config.js"></script>
-   <script defer src="./js/voice.js"></script>
-   <script defer src="./js/chat.js"></script>
-   <script defer src="./js/apiRequest.js"></script>
-   <script defer src="./js/event.js"></script>
-
-</head>
-<body>
-   <!-- ===============================================================
+      <script defer src="./js/utils.js"></script>
+      <script defer src="./js/showdown.js"></script>
+      <script defer src="./js/global.js"></script>
+      <script defer src="./js/config.js"></script>
+      <script defer src="./js/voice.js"></script>
+      <script defer src="./js/chat.js"></script>
+      <script defer src="./js/apiRequest.js"></script>
+      <script defer src="./js/event.js"></script>
+   </head>
+   <body>
+      <!-- ===============================================================
                               Hero Section  
-   ================================================================= -->
+      ================================================================= -->
 
-   <!-- ===============================================================
+      <!-- ===============================================================
                               Navigation Section  
-   ================================================================= -->
-   
-   <!-- ===============================================================
-                              Chat Section  
-   ================================================================= -->
-   <button id="sendButton">send</button>
+      ================================================================= -->
+      <nav>
+         <div id="toggle-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+         </div>
+         <aside class="sidebar">
+            <div class="sidebar-header">
+               <img src="./src/icon.png" alt="logo" />
+               <h2>Neo</h2>
+            </div>
+            <div class="new-conversation">
+               <span>Add New</span>
+               <i class="sbi-plus-square"></i>
+            </div>
+            <div class="history-title">
+               <i class="sbi-back-in-time"></i>
+               <span>Conversation History</span>
+            </div>
+            <div class="scroll">
+               <ul class="history-list">
+                  <li>
+                     <i class="sbi-grid-view"></i>
+                     <span>Conversation</span>
+                     <i class="sbi-delete-forever"></i>
+                  </li>
+                  <li>
+                     <i class="sbi-grid-view"></i>
+                     <span>Conversation</span>
+                     <i class="sbi-delete-forever"></i>
+                  </li>
+                  <li>
+                     <i class="sbi-grid-view"></i>
+                     <span>Conversation</span>
+                     <i class="sbi-delete-forever"></i>
+                  </li>
+                  <li>
+                     <i class="sbi-grid-view"></i>
+                     <span>Conversation</span>
+                     <i class="sbi-delete-forever"></i>
+                  </li>
+                  <li>
+                     <i class="sbi-grid-view"></i>
+                     <span>Conversation</span>
+                     <i class="sbi-delete-forever"></i>
+                  </li>
+                  <li>
+                     <i class="sbi-grid-view"></i>
+                     <span>Conversation</span>
+                     <i class="sbi-delete-forever"></i>
+                  </li>
+                  <li>
+                     <i class="sbi-grid-view"></i>
+                     <span>Conversation</span>
+                     <i class="sbi-delete-forever"></i>
+                  </li>
+                  <li>
+                     <i class="sbi-grid-view"></i>
+                     <span>Conversation</span>
+                     <i class="sbi-delete-forever"></i>
+                  </li>
+                  <li>
+                     <i class="sbi-grid-view"></i>
+                     <span>Conversation</span>
+                     <i class="sbi-delete-forever"></i>
+                  </li>
+               </ul>
+            </div>
+         </aside>
+      </nav>
 
-   <!-- ===============================================================
+      <!-- ===============================================================
+                              Chat Section  
+      ================================================================= -->
+      <main>
+         <header>
+            <div class="icon"><img src="./src/icon.png" alt="logo" /></div>
+         </header>
+         <div class="scroll">
+            <ul class="chat-box">
+               <li class="chat incoming">
+                  <span><i class="sbi-probot"></i></span>
+                  <p>Hi there <br />How can i help you today?</p>
+               </li>
+               <li class="chat outgoing">
+                  <p>Lorem ipsum dolor sit amet consectetur</p>
+               </li>
+            </ul>
+         </div>
+         <div class="chat-input">
+            <label class="input-sizer">
+               <textarea
+                  id="message-input"
+                  placeholder="Enter a message.."
+                  rows="1"
+                  required
+                  oninput="this.parentNode.dataset.value = this.value"
+               ></textarea>
+            </label>
+            <div id="send-button">
+               <i class="sbi-paper-plane-o"></i>
+            </div>
+            <div class="voice-input">
+               <i class="sbi-microphone"></i>
+            </div>
+         </div>
+      </main>
+
+      <!-- ===============================================================
                               Input Section  
    ================================================================= -->
-
-</body>
+   </body>
 </html>

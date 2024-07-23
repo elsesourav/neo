@@ -31,12 +31,13 @@ function appendMessage(sender, text) {
    // element . scrollTop = element . scrollHeight;
 }
 
-sendButton.addEventListener("click", () => {
-   getResponse();
-});
+// sendButton.addEventListener("click", () => {
+//    getResponse();
+// });
 
 // userInput.addEventListener("keypress", (e) => {
 //    if (e.key === "Enter") {
 //       sendBtn.click();
 //    }
 // });
+

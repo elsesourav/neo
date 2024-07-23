@@ -1,16 +1,19 @@
-const speak = (text = "") => {
+const textToSpeech = (text = "") => {
    return new Promise((resolve) => {
       const utterance = new SpeechSynthesisUtterance(text);
-      const voices = speechSynthesis.getVoices();
-      utterance.voice = voices[15];
+      utterance.lang = "hi-IN";
+      utterance.volume = 1;
+      utterance.rate = 0.8;
+      utterance.pitch = 1.2;
       speechSynthesis.speak(utterance);
       utterance.onend = () => resolve();
-   })
+   });
 };
 
-speak("");
-
-const callMe = async () => {
-   const out = await speak("hi Friends!");
+const makeVoice = async (text) => {
+   const out = await textToSpeech(text);
    console.log(out);
-}
+};
+
+
+

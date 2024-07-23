@@ -1,0 +1,34 @@
+* {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+   user-select: none;
+   touch-action: none;
+   -ms-user-select: none;
+   -ms-touch-action: none;
+   font-family: f3;
+   -ms-overflow-style: none; /* IE and Edge */
+   scrollbar-width: none; /* Firefox */
+}
+
+*::-webkit-scrollbar {
+   display: none;
+}
+
+:root {
+   --s: 20px;
+   --font-s: 18px;
+   --m: 8px;
+
+   --nav-w: 280px;
+   --input-h: 60px;
+   --input-h-max: 300px;
+}
+
+body {
+   position: relative;
+   width: 100svw;
+   height: 100svh;
+   display: flex;
+   overflow: hidden;
+}
