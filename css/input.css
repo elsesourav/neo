@@ -130,8 +130,8 @@
    position: fixed;
    width: var(--voice-view-w);
    height: var(--voice-view-h);
-   bottom: -100%;
-   right: -100%;
+   top: 150%;
+   left: 150%;
    transform: translate(-50%, -50%);
    background: var(--color-primary);
    border-radius: calc(var(--m) * 3);
@@ -144,16 +144,15 @@
    transition-duration: 400ms;
    opacity: 0;
    transition-timing-function: ease-in-out;
-   transition-property: bottom right transform outline opacity;
+   transition-property: top left outline opacity;
    z-index: 4;
 }
 
 .voice-view.active {
-   bottom: 0%;
-   right: 0%;
-   transform: translate(-50%, -50%);
-   outline: solid 10000px #0007;
+   top: 50%;
+   left: 50%;
    opacity: 1;
+   outline: solid 10000px #0007;
 }
 .voice-view .voice-icon {
    position: relative;
