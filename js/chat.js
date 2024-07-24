@@ -11,6 +11,8 @@ function setupChats(id) {
    document.querySelectorAll("pre code").forEach((block) => {
       hljs.highlightBlock(block);
    });
+   chatSection.scrollTop = chatSection.scrollHeight;
+   chatSection.scrollTop -= 100;
 }
 
 function newConversation() {
@@ -37,6 +39,8 @@ function addConversation(type, message) {
    document.querySelectorAll("pre code").forEach((block) => {
       hljs.highlightBlock(block);
    });
+   chatSection.scrollTop = chatSection.scrollHeight;
+   chatSection.scrollTop -= 100;
 }
 
 function deleteConversation(id) {
@@ -96,6 +100,8 @@ async function sendConversationFromAI() {
    if (!is) {
       setConversationHistory();
    }
+   
+   return true;
 }
 
 newConversation();

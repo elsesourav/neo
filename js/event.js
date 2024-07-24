@@ -8,6 +8,13 @@ const messageInput = document.getElementById("message-input");
 const sendButton = document.getElementById("send-button");
 const voiceButton = document.getElementById("voice-input");
 
+const voiceView = document.getElementById("voice-view");
+const voiceText = document.getElementById("voice-text");
+const voicePlayButton = document.getElementById("voice-play-button");
+const voicePauseButton = document.getElementById("voice-pause-button");
+const voiceSendButton = document.getElementById("voice-send-button");
+const voiceStopButton = document.getElementById("voice-stop-button");
+
 
 menuToggle.addEventListener("click", () => {
    navBar.classList.toggle("active");
@@ -19,6 +26,34 @@ chatSection.addEventListener("click", () => {
 newConversationButton.addEventListener("click", () => {
    newConversation();
 });
+voiceButton.addEventListener("click", () => {
+   voiceView.classList.add("active");
+   recognition.start();
+});
+voicePlayButton.addEventListener("click", () => {
+   recognition.start();
+});
+voiceStopButton.addEventListener("click", () => {
+   voiceView.classList.remove("active");
+   recognition.stop();
+   voiceText.innerText = "";
+});
+voicePauseButton.addEventListener("click", () => {
+   recognition.stop();
+});
+voiceSendButton.addEventListener("click", async () => {
+   recognition.stop();
+   messageInput.value = voiceText.innerText;
+   voiceText.innerText = "";
+   const is = await sendConversationFromAI();
+
+   if (is) {
+      const elements = document.querySelectorAll(".message");
+      const lastElement = elements[elements.length - 1];
+      textToSpeech(lastElement.innerText);
+   }
+});
+
 
 
 sendButton.addEventListener("click", () => sendConversationFromAI());

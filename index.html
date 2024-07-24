@@ -21,8 +21,8 @@
       <script defer src="./js/utils.js"></script>
       <script defer src="./js/showdown.js"></script>
       <script defer src="./js/highlight.js"></script>
-      <script defer src="./js/global.js"></script>
       <script defer src="./js/voice.js"></script>
+      <script defer src="./js/global.js"></script>
       <script defer src="./js/event.js"></script>
       <script defer src="./js/chat.js"></script>
       <script defer src="./js/apiRequest.js"></script>
@@ -92,8 +92,31 @@
             <div id="send-button">
                <i class="sbi-paper-plane-o"></i>
             </div>
-            <div class="voice-input">
+            <div class="voice-input" id="voice-input">
                <i class="sbi-microphone"></i>
+            </div>
+         </div>
+
+         <div class="voice-view" id="voice-view">
+            <div class="voice-icon">
+               <i class="sbi-microphone"></i>
+            </div>
+            <div class="voice-text-show">
+               <div id="voice-text"></div>
+            </div>
+            <div class="buttons">
+               <div class="voice-play-button" id="voice-play-button">
+                  <i class="sbi-play3"></i>
+               </div>
+               <div class="voice-pause-button" id="voice-pause-button">
+                  <i class="sbi-pause2"></i>
+               </div>
+               <div class="voice-send-button" id="voice-send-button">
+                  <i class="sbi-paper-plane-o"></i>
+               </div>
+               <div class="voice-stop-button" id="voice-stop-button">
+                  <i class="sbi-controller-stop"></i>
+               </div>
             </div>
          </div>
       </main>

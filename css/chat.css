@@ -5,7 +5,7 @@ main {
    display: flex;
    flex-direction: column;
    overflow: hidden;
-   z-index: 4;
+   z-index: 3;
 }
 main header {
    position: relative;

@@ -105,8 +105,7 @@ var hljs=function(){"use strict";function e(n){
    ;a[t[0]]=[e,U(t[0],t[1])]}))}}function U(e,n){
    return n?Number(n):(e=>F.includes(e.toLowerCase()))(e)?0:1}const P={},K=e=>{
    console.error(e)},q=(e,...n)=>{console.log("WARN: "+e,...n)},H=(e,n)=>{
-   P[`${e}/${n}`]||(console.log(`Deprecated as of ${e}. ${n}`),P[`${e}/${n}`]=!0)
-   },G=Error();function Z(e,n,{key:t}){let a=0;const i=e[t],r={},s={}
+   P[`${e}/${n}`]},G=Error();function Z(e,n,{key:t}){let a=0;const i=e[t],r={},s={}
    ;for(let e=1;e<=n.length;e++)s[e+a]=i[e],r[e+a]=!0,a+=p(n[e-1])
    ;e[t]=s,e[t]._emit=r,e[t]._multi=!0}function W(e){(e=>{
    e.scope&&"object"==typeof e.scope&&null!==e.scope&&(e.beginScope=e.scope,
@@ -262,7 +261,7 @@ var hljs=function(){"use strict";function e(n){
    q("Falling back to no-highlight mode for this block.",e)),n?t[1]:"no-highlight"}
    return n.split(/\s+/).find((e=>_(e)||v(e)))})(e);if(_(t))return
    ;if(O("before:highlightElement",{el:e,language:t
-   }),e.dataset.highlighted)return void console.log("Element previously highlighted. To highlight again, first unset `dataset.highlighted`.",e)
+   }),e.dataset.highlighted)return null;
    ;if(e.children.length>0&&(p.ignoreUnescapedHTML||(console.warn("One of your code blocks includes unescaped HTML. This is a potentially serious security risk."),
    console.warn("https://github.com/highlightjs/highlight.js/wiki/security"),
    console.warn("The element with unescaped HTML:"),
