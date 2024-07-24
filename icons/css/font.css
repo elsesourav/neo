@@ -1,4 +1,8 @@
 @font-face {
+   font-family: f0;
+   src: url("../font/CascadiaCode.ttf") format("truetype");
+}
+@font-face {
    font-family: f1b;
    src: url("../font/Exo-Bold.ttf") format("truetype");
 }

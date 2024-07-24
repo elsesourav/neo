@@ -1,0 +1,117 @@
+.chat-input {
+   position: fixed;
+   width: calc(100% - calc(var(--s) * 2));
+   bottom: 0;
+   left: 0;
+   display: grid;
+   grid-template-columns: auto calc(var(--s) * 2) calc(var(--s) * 2.6);
+   gap: calc(var(--m));
+   justify-items: center;
+   align-items: end;
+   margin: var(--s);
+   z-index: 4;
+}
+.chat-input::after {
+   content: "";
+   position: absolute;
+   width: 200%;
+   bottom: -45%;
+   height: 150%;
+   backdrop-filter: blur(3px);
+   -webkit-backdrop-filter: blur(3px);
+   z-index: -1;
+}
+.chat-input::before {
+   content: "";
+   position: absolute;
+   width: 100%;
+   height: 100%;
+   background: #f1f1f1;
+   border-radius: calc(var(--m));
+   box-shadow: 0 2px 6px #00000077;
+   border: solid 1px #0004;
+   z-index: 1;
+}
+
+.input-sizer {
+   position: relative;
+   width: 100%;
+   display: inline-grid;
+   justify-content: start;
+   margin: 5px;
+   z-index: 2;
+}
+
+.input-sizer::after,
+.input-sizer textarea {
+   width: 100%;
+   grid-area: 1/2;
+   font: inherit;
+   padding: calc(var(--m) * 1.2) calc(var(--m) * 1.8);
+   margin: 0;
+   resize: none;
+   background: none;
+   appearance: none;
+   outline: none;
+   border: none;
+   z-index: 2;
+}
+.input-sizer::after {
+   content: attr(data-value) " ";
+   visibility: hidden;
+   white-space: pre-wrap;
+}
+.input-sizer:focus-within {
+   outline: none;
+   box-shadow: 0;
+}
+.input-sizer:focus-within textarea:focus {
+   outline: none;
+}
+
+
+.chat-input #send-button {
+   width: calc(var(--s) * 2);
+   height: calc(var(--s) * 2);
+   background: transparent;
+   display: grid;
+   place-items: center;
+   margin-bottom: calc(calc(var(--input-h) - var(--s) * 2) / 4);
+   border-radius: calc(var(--m));
+   transition: ease 300ms background;
+   z-index: 2;
+}
+
+.chat-input #send-button:hover {
+   background: #8334dd;
+   box-shadow: 1px 2px 4px #000;
+   border: solid 1px #0004;
+}
+
+.chat-input #send-button i {
+   font-size: calc(var(--font-s) * 1.4);
+   color: #8334dd;
+   transition: ease 300ms color;
+}
+
+.chat-input #send-button:hover i {
+   color: #ffffff;
+}
+
+.chat-input .voice-input {
+   display: grid;
+   place-items: center;
+   width: calc(var(--s) * 2);
+   height: calc(var(--s) * 2);
+   border-radius: calc(var(--m));
+   margin-bottom: calc(calc(var(--input-h) - var(--s) * 2) / 4);
+   background: #8334dd;
+   box-shadow: 1px 2px 4px #000;
+   border: solid 1px #0004;
+   z-index: 2;
+}
+
+.voice-input i {
+   font-size: calc(var(--font-s) * 1.4);
+   color: #fff;
+}

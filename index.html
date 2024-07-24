@@ -13,10 +13,10 @@
       <link rel="stylesheet" href="./icons/css/font.css" />
       <link rel="stylesheet" href="./css/global.css" />
       <link rel="stylesheet" href="./css/hero.css" />
+      <link rel="stylesheet" href="./css/highlight.css" />
       <link rel="stylesheet" href="./css/nav.css" />
       <link rel="stylesheet" href="./css/input.css" />
       <link rel="stylesheet" href="./css/chat.css" />
-
       <!-- ===============================================================
                                  JavaScript  
    ================================================================= -->
@@ -24,19 +24,16 @@
       <script defer src="./js/showdown.js"></script>
       <script defer src="./js/global.js"></script>
       <script defer src="./js/config.js"></script>
+      <script defer src="./js/highlight.js"></script>
       <script defer src="./js/voice.js"></script>
+      <script defer src="./js/event.js"></script>
       <script defer src="./js/chat.js"></script>
       <script defer src="./js/apiRequest.js"></script>
-      <script defer src="./js/event.js"></script>
    </head>
    <body>
       <!-- ===============================================================
-                              Hero Section  
-      ================================================================= -->
-
-      <!-- ===============================================================
-                              Navigation Section  
-      ================================================================= -->
+                           Navigation Section  
+   ================================================================= -->
       <nav>
          <div id="toggle-menu">
             <span></span>
@@ -48,7 +45,7 @@
                <img src="./src/icon.png" alt="logo" />
                <h2>Neo</h2>
             </div>
-            <div class="new-conversation">
+            <div class="new-conversation" id="new-conversation">
                <span>Add New</span>
                <i class="sbi-plus-square"></i>
             </div>
@@ -57,7 +54,7 @@
                <span>Conversation History</span>
             </div>
             <div class="scroll">
-               <ul class="history-list">
+               <ul class="history-list" id="conversation-history">
                   <li>
                      <i class="sbi-grid-view"></i>
                      <span>Conversation</span>
@@ -108,24 +105,24 @@
          </aside>
       </nav>
 
-      <!-- ===============================================================
-                              Chat Section  
-      ================================================================= -->
       <main>
+         <!-- ===============================================================
+                              Hero Section  
+      ================================================================= -->
          <header>
             <div class="icon"><img src="./src/icon.png" alt="logo" /></div>
          </header>
-         <div class="scroll">
-            <ul class="chat-box">
-               <li class="chat incoming">
-                  <span><i class="sbi-probot"></i></span>
-                  <p>Hi there <br />How can i help you today?</p>
-               </li>
-               <li class="chat outgoing">
-                  <p>Lorem ipsum dolor sit amet consectetur</p>
-               </li>
-            </ul>
+
+         <!-- ===============================================================
+                              Chat Section  
+      ================================================================= -->
+         <div class="scroll" id="in-out">
+            <ul class="chat-box" id="chat-box"></ul>
          </div>
+
+         <!-- ===============================================================
+                              Input Section  
+      ================================================================= -->
          <div class="chat-input">
             <label class="input-sizer">
                <textarea
@@ -145,8 +142,5 @@
          </div>
       </main>
 
-      <!-- ===============================================================
-                              Input Section  
-   ================================================================= -->
    </body>
 </html>

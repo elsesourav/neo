@@ -1,43 +1,53 @@
-const aiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=AIzaSyBqBkg5sq7cWVX7w6oq32jMRYYPm5oWuyA`;
+function setupChats(id) {
+   const conversation = storage[id];
+   console.log(conversation);
 
-const history = [];
-
-async function getResponse(prompt = "hello") {
-   history.push({ role: 'user', parts: [{ text: prompt }] });
-   try {
-      const response = await fetch(aiUrl, {
-         method: "POST",
-         headers: {
-            "Content-Type": "application/json",
-         },
-         body: JSON.stringify({
-            contents: history,
-         }),
-      });
-      const modelResponse = await response.json();
-      const aiMessage = modelResponse.candidates[0].content.parts[0].text;
-
-      appendMessage("model", aiMessage);
-
-      history.push({ role: 'model', parts: [{ text: aiMessage }] });
-   } catch (error) {
-      console.error("Error:", error);
+   outputChat.innerHTML = "";
+   history = conversation.messages;
+   currentConversationId = conversation.id;
+   for (let message of history) {
+      
+      const html = converter.makeHtml(message.parts[0].text);
+      console.log(html);
+      
+      addConversation(message.role, html);
    }
 }
 
-function appendMessage(sender, text) {
-   console.log(sender, text);
-
-   // element . scrollTop = element . scrollHeight;
+function newConversation() {
+   outputChat.innerHTML = "";
+   history = [];
+   currentConversationId = createConversationId();
+   messageInput.value = "";
 }
 
-// sendButton.addEventListener("click", () => {
-//    getResponse();
-// });
+function addConversation(type, message) {
+   let str;
+   // const converter = new showdown.Converter();
+   // const html = converter.makeHtml(message);
+   if (type === "user") {
+      str = 
+      `<li class="chat outgoing">
+            <div class="message">${message}</div>
+      </li>`
+   } else {
+      str = 
+      `<li class="chat incoming">
+            <span><i class="sbi-probot"></i></span>
+            <div class="message">${message}</div>
+      </li>`
+   }
+   outputChat.innerHTML += str;
+}
 
-// userInput.addEventListener("keypress", (e) => {
-//    if (e.key === "Enter") {
-//       sendBtn.click();
-//    }
-// });
+setupChats(1721753562842)
+
+
+
+
+
+
+
+
+
 

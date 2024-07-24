@@ -22,7 +22,10 @@
 
    --nav-w: 280px;
    --input-h: 60px;
-   --input-h-max: 300px;
+   --input-h-max: 200px;
+
+   --code-dark: #282a38e6;
+   --code-light: #f2f2f2;
 }
 
 body {
@@ -31,4 +34,5 @@ body {
    height: 100svh;
    display: flex;
    overflow: hidden;
+   background: light-dark(#0007, #fff7);
 }
