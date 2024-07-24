@@ -4,10 +4,11 @@ nav {
    left: calc(var(--nav-w) * -1);
    height: 100%;
    width: var(--nav-w);
-   background: #161a2d;
+   background: light-dark(var(--dark-menu), var(--light-menu));
    padding: calc(var(--s));
    overflow: visible;
    transition: ease-in-out left 300ms;
+   border-right: solid 2px light-dark(#000, #fff);
    z-index: 5;
 }
 nav.active {

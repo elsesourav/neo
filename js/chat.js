@@ -33,7 +33,7 @@ function addConversation(type, message) {
    } else {
       str = 
       `<li class="chat incoming">
-            <span><i class="sbi-probot"></i></span>
+            <span><img src="./src/iconSmall.png" alt="icon"></img></span>
             <div class="message">${message}</div>
       </li>`
    }
