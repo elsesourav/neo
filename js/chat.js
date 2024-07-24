@@ -5,11 +5,9 @@ function setupChats(id) {
    outputChat.innerHTML = "";
    history = conversation.messages;
    currentConversationId = conversation.id;
+
    for (let message of history) {
-      
       const html = converter.makeHtml(message.parts[0].text);
-      console.log(html);
-      
       addConversation(message.role, html);
    }
 }
@@ -40,7 +38,7 @@ function addConversation(type, message) {
    outputChat.innerHTML += str;
 }
 
-setupChats(1721753562842)
+// setupChats(1721753562842)
 
 
 

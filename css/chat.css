@@ -63,15 +63,18 @@ main .chat-box * {
 .chat-box .outgoing {
    justify-content: flex-end;
 }
+.chat-box .incoming {
+   gap: calc(var(--m) / 2); 
+}
 .chat-box .incoming img {
    position: relative;
-   height: calc(var(--s) * 1.8);
-   width: calc(var(--s) * 1.8);
-   background: #f2f2f2;
+   height: calc(var(--s) * 2);
+   width: calc(var(--s) * 2);
+   background: light-dark(#000a, #fffa);
    color: #fcf3f3;
    text-align: center;
    border-radius: 33%;
-   margin: calc(var(--m) / 2);
+   padding: calc(var(--m) / 4);
    font-size: calc(var(--font-s) * 1);
    display: grid;
    place-items: center;
@@ -79,7 +82,6 @@ main .chat-box * {
 
 .chat-box .chat .message {
    position: relative;
-   color: #fff;
    font-size: calc(var(--font-s) * 0.8);
    max-width: 75%;
    padding: calc(var(--m) * 1.4) calc(var(--m) * 2);
@@ -89,10 +91,14 @@ main .chat-box * {
    display: flex;
    flex-direction: column;
 }
+.chat-box .chat .message * {
+   color: #fff;
+}
 .chat-box .incoming .message {
    color: #000;
-   background: #f2f2f2;
-   border-radius: var(--m) var(--m) var(--m) 0;
+   background: light-dark(#222, #ddda);
+   border-radius: 0 var(--m) var(--m) var(--m);
+   outline: solid 1px #0008;
 }
 
 /* -------- color for prompt ---------- */

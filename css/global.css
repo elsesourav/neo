@@ -22,14 +22,15 @@
    --input-h: 60px;
    --input-h-max: 200px;
 
+   
+   --color-primary: linear-gradient(to top left, #6200ff, #8c00ff);
+   --color-primary-i: #6200ff;
+   
    --dark-menu: #161a2d;
    --light-menu: #f1f1f1;
 
    --dark-main: #333333;
    --light-main: #f1f1f1;
-
-   --color-primary: linear-gradient(to top left, #6200ff, #8c00ff);
-   --color-primary-i: #6200ff;
 
    --code-dark: #282a38e6;
    --code-light: #f2f2f2;
