@@ -12,7 +12,6 @@ async function getResponse(prompt = "hello") {
          }),
       });
       const modelResponse = await response.json();
-      console.log(modelResponse);
       const aiMessage = modelResponse.candidates[0].content.parts[0].text;
 
       appendMessage("model", aiMessage);
@@ -30,13 +29,4 @@ function appendMessage(sender, text) {
    // element . scrollTop = element . scrollHeight;
 }
 
-// sendButton.addEventListener("click", () => {
-//    getResponse();
-// });
-
-// userInput.addEventListener("keypress", (e) => {
-//    if (e.key === "Enter") {
-//       sendBtn.click();
-//    }
-// });
 
