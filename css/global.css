@@ -3,9 +3,7 @@
    padding: 0;
    box-sizing: border-box;
    user-select: none;
-   touch-action: none;
    -ms-user-select: none;
-   -ms-touch-action: none;
    font-family: f3;
    -ms-overflow-style: none; /* IE and Edge */
    scrollbar-width: none; /* Firefox */
