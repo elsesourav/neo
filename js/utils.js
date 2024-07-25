@@ -95,9 +95,12 @@ function splitHtmlIntoArray(html) {
    });
 }
 
-async function typeHtml(element, html, delay = 10) {
+async function typeHtml(element, html, delay = 10, fun = () => {}) {
    const array = splitHtmlIntoArray(html); 
    let content = "";
+   fun();
+
+   let i = 1;
 
    for (const item of array) {
       if (item.startsWith("<") && item.endsWith(">")) {
@@ -107,9 +110,13 @@ async function typeHtml(element, html, delay = 10) {
             content += char;
             element.innerHTML = content;
             await wait(delay);
+
+            // for scrolling
+            if ((i++ % 30) == 0) {
+               fun();
+            }
          }
       }
-
       element.innerHTML = content;
    }
 }

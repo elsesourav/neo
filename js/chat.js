@@ -11,8 +11,12 @@ function setupChats(id) {
    document.querySelectorAll("pre code").forEach((block) => {
       hljs.highlightBlock(block);
    });
+   chatScrollBottom();
+}
+
+function chatScrollBottom() {
    chatSection.scrollTop = chatSection.scrollHeight;
-   chatSection.scrollTop -= 100;
+   chatSection.scrollTop -= 20;
 }
 
 function newConversation() {
@@ -50,12 +54,10 @@ async function addConversation(type, message, animation = true) {
       if (animation) {
          const newHtml = lastElement.innerHTML;
          lastElement.innerHTML = "";
-         await typeHtml(lastElement, newHtml, 10);
+         await typeHtml(lastElement, newHtml, 10, chatScrollBottom);
       }
    }
-
-   chatSection.scrollTop = chatSection.scrollHeight;
-   chatSection.scrollTop -= 100;
+   chatScrollBottom()
 }
 
 function deleteConversation(id) {

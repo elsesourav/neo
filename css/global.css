@@ -6,7 +6,7 @@
 
    --nav-w: 280px;
    --input-h: 70px;
-   --input-h-max: 200px;
+   --input-h-max: 100px;
 
    --voice-view-w: 250px;
    --voice-view-h: 300px;
@@ -30,18 +30,16 @@
    box-sizing: border-box;
    user-select: none;
    -ms-user-select: none;
-   font-family: f3;
    -ms-overflow-style: none; /* IE and Edge */
    scrollbar-width: none; /* Firefox */
-
+   font-family: f3;
+   
    /* outline: solid 1px #f003; */
 }
 
 *::-webkit-scrollbar {
    display: none;
 }
-
-
 
 body {
    position: relative;
