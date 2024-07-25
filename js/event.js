@@ -13,7 +13,7 @@ const voiceText = document.getElementById("voice-text");
 const voicePlayButton = document.getElementById("voice-play-button");
 const voicePauseButton = document.getElementById("voice-pause-button");
 const voiceSendButton = document.getElementById("voice-send-button");
-const voiceStopButton = document.getElementById("voice-stop-button");
+const voiceCloseButton = document.getElementById("voice-close-button");
 
 
 menuToggle.addEventListener("click", () => {
@@ -28,23 +28,26 @@ newConversationButton.addEventListener("click", () => {
 });
 voiceButton.addEventListener("click", () => {
    voiceView.classList.add("active");
-   recognition.start();
+   setTimeout(() => {
+      startVoiceRecognition();
+   }, 500);
 });
 voicePlayButton.addEventListener("click", () => {
-   recognition.start();
+   startVoiceRecognition();
 });
-voiceStopButton.addEventListener("click", () => {
+voiceCloseButton.addEventListener("click", () => {
    voiceView.classList.remove("active");
-   recognition.stop();
-   voiceText.innerText = "";
+   stopVoiceRecognition();
+   stopSpeech();
+   voiceText.value = "";
 });
 voicePauseButton.addEventListener("click", () => {
-   recognition.stop();
+   stopVoiceRecognition();
 });
 voiceSendButton.addEventListener("click", async () => {
-   recognition.stop();
-   messageInput.value = voiceText.innerText;
-   voiceText.innerText = "";
+   stopVoiceRecognition();
+   messageInput.value = voiceText.value;
+   voiceText.value = "";
    const is = await sendConversationFromAI();
 
    if (is) {

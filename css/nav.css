@@ -1,5 +1,4 @@
 nav {
-   
    position: fixed;
    top: 0;
    left: calc(var(--nav-w) * -1);
