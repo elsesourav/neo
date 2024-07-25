@@ -5,7 +5,7 @@ function setupChats(id) {
    history = conversation.messages;
 
    for (let message of history) {
-      addConversation(message.role, message.parts[0].text);
+      addConversation(message.role, message.parts[0].text, false);
    }
 
    document.querySelectorAll("pre code").forEach((block) => {
@@ -22,23 +22,38 @@ function newConversation() {
    messageInput.value = "";
 }
 
-function addConversation(type, message) {
+async function addConversation(type, message, animation = true) {
    const html = converter.makeHtml(message);
+   const id = Date.now();
+
    let str;
    if (type === "user") {
       str = `<li class="chat outgoing">
-            <div class="message">${html}</div>
+      <div class="message">${html}</div>
       </li>`;
    } else {
       str = `<li class="chat incoming">
-            <span><img src="./src/iconSmall.png" alt="icon"></img></span>
-            <div class="message">${html}</div>
+            <span><img src="./src/iconSmall.png" alt="icon"></span>
+            <div class="message" id="message-${id}"></div>
       </li>`;
    }
    outputChat.innerHTML += str;
-   document.querySelectorAll("pre code").forEach((block) => {
-      hljs.highlightBlock(block);
-   });
+
+   // make typing animations
+   if (type !== "user") {
+      const lastElement = document.getElementById(`message-${id}`);
+      lastElement.innerHTML = html;
+      lastElement.querySelectorAll("pre code").forEach((block) => {
+         hljs.highlightBlock(block);
+      });
+
+      if (animation) {
+         const newHtml = lastElement.innerHTML;
+         lastElement.innerHTML = "";
+         await typeHtml(lastElement, newHtml, 10);
+      }
+   }
+
    chatSection.scrollTop = chatSection.scrollHeight;
    chatSection.scrollTop -= 100;
 }
@@ -56,8 +71,8 @@ function setConversationHistory() {
    conversationHistory.innerHTML = "";
    let html = "";
    for (const id in storage) {
-      html = 
-      `<li>
+      html =
+         `<li>
          <i class="sbi-grid-view"></i>
          <span id="span-${id}" onclick="setupChats(${id})"></span>
          <i class="sbi-delete-forever" onclick="deleteConversation(${id})"></i>
@@ -70,16 +85,14 @@ function setConversationHistory() {
       const spanIds = document.getElementById(`span-${id}`);
       spanIds.textContent = subText;
    }
-   
 }
-
 
 let storageOldData = getLocalStorage();
 if (storageOldData) {
    storage = storageOldData;
    setConversationHistory();
 }
- 
+
 async function sendConversationFromAI() {
    const is = storage[currentConversationId];
 
@@ -92,15 +105,15 @@ async function sendConversationFromAI() {
 
       // save storage
       storage[currentConversationId] = {
-         messages: history
-      }
+         messages: history,
+      };
       saveLocalStorage();
    }
 
    if (!is) {
       setConversationHistory();
    }
-   
+
    return true;
 }
 
