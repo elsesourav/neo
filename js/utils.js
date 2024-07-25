@@ -20,7 +20,10 @@ const debounce = (func, delay = 1000) => {
 };
 
 const isMobile =
-   localStorage.mobile || "ontouchstart" in window || navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0;
+   localStorage.mobile ||
+   "ontouchstart" in window ||
+   navigator.maxTouchPoints > 0 ||
+   navigator.msMaxTouchPoints > 0;
 
 // create element
 const CE = (tagName, className = [], inrHtml = "", parent = null) => {
@@ -99,7 +102,7 @@ function splitHtmlIntoArray(html) {
 }
 
 async function typeHtml(element, html, delay = 10, fun = () => {}) {
-   const array = splitHtmlIntoArray(html); 
+   const array = splitHtmlIntoArray(html);
    let content = "";
    fun();
 
@@ -115,7 +118,7 @@ async function typeHtml(element, html, delay = 10, fun = () => {}) {
             await wait(delay);
 
             // for scrolling
-            if ((i++ % 30) == 0) {
+            if (i++ % 30 == 0) {
                fun();
             }
          }
@@ -123,3 +126,25 @@ async function typeHtml(element, html, delay = 10, fun = () => {}) {
       element.innerHTML = content;
    }
 }
+
+class LinearRandomGenerator {
+   constructor(range, maxStep, seed = Date.now()) {
+      this.current = seed;
+      this.min = range[0];
+      this.max = range[1];
+      this.maxStep = maxStep;
+   }
+
+   next(isInt = false) {
+      const step = (Math.random() - 0.5) * 2 * this.maxStep;
+      let nextValue = this.current + step;
+
+      if (nextValue < this.min) nextValue = this.min;
+      if (nextValue > this.max) nextValue = this.max;
+
+      this.current = nextValue;
+      return isInt ? Math.floor(nextValue) : nextValue;
+   }
+}
+
+const linearGen = new LinearRandomGenerator([0, 60], 5);

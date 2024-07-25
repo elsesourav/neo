@@ -1,6 +1,24 @@
-function setMicrophoneAnimation(value = 0) {
-   if (value > 0) voiceView.setAttribute("style", `--scale: ${value};--extra: ${1}`);
-   else voiceView.setAttribute("style", `--scale: ${value};--extra: ${0}`);
+let isRandom = false;
+async function setMicrophoneAnimationRandom() {
+   if (isRandom) {
+      const random = linearGen.next(true);
+      voiceView.setAttribute("style", `--scale: ${random};--extra: ${1}`);
+      await wait(10);
+      setMicrophoneAnimationRandom();
+   }
+}
+
+function setMicrophoneAnimation(value = 0, random = false) {
+   if (random) {
+      isRandom = true;
+      setMicrophoneAnimationRandom();
+      return;
+   } else {
+      isRandom = false;
+      if (value > 0)
+         voiceView.setAttribute("style", `--scale: ${value};--extra: ${1}`);
+      else voiceView.setAttribute("style", `--scale: ${value};--extra: ${0}`);
+   }
 }
 
 /* ---------------- Text to Speech Converter -------------- */
@@ -95,6 +113,7 @@ let isRecognitionRunning = false;
 
 recognition.onstart = () => {
    isRecognitionRunning = true;
+   if (isMobile) setMicrophoneAnimation(1, true);
    // console.log("start recognition.");
 };
 recognition.onend = () => {
