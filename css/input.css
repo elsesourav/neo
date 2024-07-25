@@ -74,30 +74,31 @@
 .chat-input #send-button {
    width: calc(var(--s) * 2);
    height: calc(var(--s) * 2);
-   background: transparent;
    display: grid;
    place-items: center;
+   transform: translateY(3px);
    margin-bottom: calc(calc(var(--input-h) - var(--s) * 2) / 4);
    border-radius: calc(var(--m));
-   transition: ease 300ms background;
+   background: transparent;
+   transition: ease-in-out 200ms background;
+   cursor: var(--cursor);
    z-index: 2;
 }
 
 .chat-input #send-button i {
    font-size: calc(var(--font-s) * 1.4);
    color: var(--color-primary-i);
-   transition: ease 300ms color;
+   transition: ease-in-out 200ms color;
 }
 @media (hover: hover) and (pointer: fine) {
    .chat-input #send-button:hover {
-      background: var(--color-primary);
       box-shadow: 1px 2px 4px #000;
       border: solid 1px #0004;
+      background: var(--color-primary-i);
    }
    .chat-input #send-button:hover i {
       color: #ffffff;
    }
-
 }
 .chat-input #send-button:active {
    background: var(--color-primary);
@@ -118,14 +119,23 @@
    background: var(--color-primary);
    box-shadow: 1px 2px 4px #000;
    border: solid 1px #0004;
+   cursor: var(--cursor);
    z-index: 2;
 }
 
 .voice-input i {
    font-size: calc(var(--font-s) * 1.4);
+   transition: ease-in-out 300ms font-size;
    color: #fff;
 }
-
+@media (hover: hover) and (pointer: fine) {
+   .voice-input:hover i {
+      font-size: calc(var(--font-s) * 1.6);
+   }
+}
+.voice-input:active i {
+   font-size: calc(var(--font-s) * 1.6);
+}
 .voice-view {
    position: fixed;
    width: var(--voice-view-w);
@@ -193,6 +203,7 @@
    display: grid;
    place-items: center;
    font-size: calc(var(--font-s) * 4);
+   color: #fff;
    text-shadow: 0 0 1px #000;
 }
 .voice-view .voice-icon::before {
@@ -227,11 +238,11 @@
    background: #0002;
    border-radius: calc(var(--m));
    box-shadow: inset 0 0 2px #000;
-   color: #fff;
 }
 .voice-view .voice-text-show textarea {
    position: absolute;
    padding: calc(var(--m));
+   color: #fff;
    width: 100%;
    height: 100%;
    resize: none;
@@ -262,6 +273,7 @@
    box-shadow: -1px -1px 2px #fff5, 2px 2px 3px #0007;
    transition: linear 300ms background;
    z-index: 2;
+   cursor: var(--cursor);
 }
 .voice-view .buttons div[class*="voice-"] i {
    color: #fff;
@@ -362,11 +374,6 @@
 .voice-view .buttons div[class*="voice-"]:last-child:active i {
    color: #fff;
 }
-
-
-
-
-
 
 #temp-for-read {
    display: none;

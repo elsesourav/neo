@@ -53,7 +53,7 @@ voiceSendButton.addEventListener("click", async () => {
    const is = await sendConversationFromAI(true);
 
    if (is) {
-      textToSpeech(tempForRead.innerText);
+      textToSpeech(tempForRead.textContent);
    }
 });
 

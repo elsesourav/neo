@@ -19,12 +19,15 @@ const debounce = (func, delay = 1000) => {
    };
 };
 
+//use cssRoot.style.setProperty("key", "value");
+const rootStyle = document.querySelector(":root").style;
 const isMobile =
    localStorage.mobile ||
    "ontouchstart" in window ||
    navigator.maxTouchPoints > 0 ||
    navigator.msMaxTouchPoints > 0;
 
+if (!isMobile) rootStyle.setProperty("--cursor", "pointer");
 // create element
 const CE = (tagName, className = [], inrHtml = "", parent = null) => {
    const e = document.createElement(tagName);

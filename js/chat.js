@@ -33,7 +33,7 @@ async function addConversation(type, message, animation = true) {
    let str;
    if (type === "user") {
       str = `<li class="chat outgoing">
-      <div class="message">${html}</div>
+      <div class="message">${message}</div>
       </li>`;
    } else {
       str = `<li class="chat incoming">
@@ -47,7 +47,7 @@ async function addConversation(type, message, animation = true) {
    if (type !== "user") {
       const lastElement = document.getElementById(`message-${id}`);
       lastElement.innerHTML = html;
-      tempForRead.innerText = lastElement.innerText;
+      tempForRead.textContent = lastElement.textContent;
       lastElement.querySelectorAll("pre code").forEach((block) => {
          hljs.highlightBlock(block);
       });
@@ -84,7 +84,7 @@ function setConversationHistory() {
    conversationHistory.innerHTML = html;
    for (const id in storage) {
       const text = storage[id].messages[1].parts[0].text.trim();
-      const subText = text.length > 18 ? text.substring(0, 18) + "..." : text;
+      const subText = text.length > 25 ? text.substring(0, 23) + "..." : text;
       const spanIds = document.getElementById(`span-${id}`);
       spanIds.textContent = subText;
    }
@@ -96,15 +96,14 @@ if (storageOldData) {
    setConversationHistory();
 }
 
-async function sendConversationFromAI(isAddHindi = false) {
+async function sendConversationFromAI(inVoice = false) {
    const is = storage[currentConversationId];
 
    const inputText = messageInput.value.trim();
    messageInput.value = "";
    if (inputText !== "") {
       addConversation("user", inputText);
-      const addInputText = isAddHindi? inputText + ". at last add small hindi tips. and don't show `hindi tips` in conversation": inputText;
-      const text = await getResponse(addInputText);
+      const text = await getResponse(inputText, inVoice);
       addConversation("model", text);
 
       // save storage
