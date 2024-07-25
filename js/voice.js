@@ -11,6 +11,7 @@ async function setMicrophoneAnimationRandom() {
 function setMicrophoneAnimation(value = 0, random = false) {
    if (random) {
       isRandom = true;
+      voiceView.setAttribute("style", `--scale: ${value};--extra: ${0}`);
       setMicrophoneAnimationRandom();
       return;
    } else {
@@ -30,7 +31,14 @@ const textToSpeech = (text = "") => {
       utterance.rate = 1;
       utterance.pitch = 1;
       speechSynthesis.speak(utterance);
-      utterance.onend = () => resolve();
+
+      setMicrophoneAnimation(1, true);
+      voiceView.classList.add("speech");
+      utterance.onend = () => {
+         resolve();
+         setMicrophoneAnimation(0);
+         voiceView.classList.remove("speech");
+      };
    });
 };
 
@@ -63,7 +71,7 @@ function startVolumeDetection() {
          javascriptNode.connect(audioContext.destination);
 
          javascriptNode.onaudioprocess = function () {
-            if (analyser.frequencyBinCount) {
+            if (analyser && analyser.frequencyBinCount) {
                const array = new Uint8Array(analyser.frequencyBinCount);
                analyser.getByteFrequencyData(array);
                const values = array.reduce((a, b) => a + b);

@@ -155,4 +155,4 @@ class LinearRandomGenerator {
    }
 }
 
-const linearGen = new LinearRandomGenerator([0, 60], 5);
+const linearGen = new LinearRandomGenerator([0, 50], 5);

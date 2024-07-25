@@ -13,7 +13,6 @@ function setupChats(id) {
 
 function chatScrollBottom() {
    chatSection.scrollTop = chatSection.scrollHeight;
-   chatSection.scrollTop -= 20;
 }
 
 function newConversation() {

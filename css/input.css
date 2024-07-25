@@ -230,6 +230,10 @@
    text-shadow: 0 0 calc(6px * var(--extra))
       hsl(calc(100 + var(--scale) * 6), 100%, 50%);
 }
+.voice-view:not(.speech) .voice-icon i:last-child,
+.voice-view.speech .voice-icon i:first-child {
+   display: none;
+}
 
 .voice-view .voice-text-show {
    position: relative;
