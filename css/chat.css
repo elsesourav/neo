@@ -49,7 +49,7 @@ main .scroll .chat-box {
    gap: calc(var(--m));
    flex-direction: column;
    padding: calc(var(--m));
-   padding-bottom: calc(var(--input-h-max));
+   padding-bottom: calc(var(--input-h) + var(--s));
 }
 main .chat-box * {
    user-select: text;
@@ -181,6 +181,20 @@ main .chat-box * {
    font-family: f7b;
    color: light-dark(#9000ff, #ba60ff);
 }
+
+.message:not( pre) > p {
+   display: inline;
+}
+.message:not( pre) > p * {
+   display: inline;
+   height: min-content;
+}
+.message:not( pre) ul li *,
+.message:not( pre) ol li * {
+   display: inline;
+}
+
+
 .message code * {
    font-family: f0;
    font-size: calc(var(--font-s) * 0.8);

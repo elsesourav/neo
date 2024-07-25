@@ -17,7 +17,6 @@ const voicePauseButton = document.getElementById("voice-pause-button");
 const voiceSendButton = document.getElementById("voice-send-button");
 const voiceCloseButton = document.getElementById("voice-close-button");
 
-
 menuToggle.addEventListener("click", () => {
    navBar.classList.toggle("active");
 });
@@ -57,22 +56,27 @@ voiceSendButton.addEventListener("click", async () => {
    }
 });
 
-
-
 sendButton.addEventListener("click", () => sendConversationFromAI());
 
 let shiftKeyIsDown = false;
 
 addEventListener("keydown", (e) => {
    if (e.keyCode === 16) shiftKeyIsDown = true;
-})
+});
 addEventListener("keyup", (e) => {
    if (e.keyCode === 16) shiftKeyIsDown = false;
-})
+});
 
 messageInput.addEventListener("keypress", (e) => {
    if (!shiftKeyIsDown && e.key === "Enter") {
       sendButton.click();
       e.preventDefault();
    }
+});
+
+messageInput.addEventListener("input", ({ target }) => {
+   const maxHeight = parseInt(getCssRootValues("--input-h-max").replace("px", ""));
+   target.style.height = "min-content";
+   const height = target.scrollHeight < maxHeight ? target.scrollHeight : maxHeight;
+   target.style.height = `${height}px`;
 });

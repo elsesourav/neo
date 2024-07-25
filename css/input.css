@@ -1,6 +1,7 @@
 .chat-input {
    position: fixed;
    width: calc(100% - calc(var(--s) * 2));
+   height: auto !important;
    bottom: 0;
    left: 0;
    display: grid;
@@ -36,23 +37,20 @@
 .input-sizer {
    position: relative;
    width: 100%;
-   overflow: hidden;
-   display: grid;
-   margin: auto;
-   justify-content: flex-start;
+   height: auto !important;
+   display: inline-block;
    z-index: 2;
 }
 
-.input-sizer::after,
 .input-sizer textarea {
    position: relative;
-   width: 200%;
-   grid-area: 1/2;
-   font: inherit;
+   width: inherit;
+   height: max-content;
+   font-family: f3;
+   font-size: calc(var(--font-s) * 0.9);
    padding: var(--m) calc(var(--m) * 2);
-   margin: 0;
    resize: none;
-   background: none;
+   background: transparent;
    appearance: none;
    outline: none;
    border: none;
@@ -136,6 +134,11 @@
 .voice-input:active i {
    font-size: calc(var(--font-s) * 1.6);
 }
+
+
+
+
+/* ------------- voice chat viewer ------------- */
 .voice-view {
    position: fixed;
    width: var(--voice-view-w);
@@ -159,8 +162,8 @@
    position: absolute;
    width: 100%;
    height: 100%;
-   background: var(--color-primary);
    border: solid 1px #000;
+   background: var(--color-primary);
    border-radius: inherit;
    box-shadow: inset 0px 0px 3px #fff;
    z-index: -1;

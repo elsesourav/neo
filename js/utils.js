@@ -28,6 +28,11 @@ const isMobile =
    navigator.msMaxTouchPoints > 0;
 
 if (!isMobile) rootStyle.setProperty("--cursor", "pointer");
+
+function getCssRootValues(name) {
+   const rootStyles = getComputedStyle(document.documentElement);
+   return rootStyles.getPropertyValue(name).trim();
+}
 // create element
 const CE = (tagName, className = [], inrHtml = "", parent = null) => {
    const e = document.createElement(tagName);
@@ -103,7 +108,7 @@ function splitHtmlIntoArray(html) {
       return [item];
    });
 }
-
+ 
 async function typeHtml(element, html, delay = 10, fun = () => {}) {
    const array = splitHtmlIntoArray(html);
    let content = "";
@@ -128,7 +133,7 @@ async function typeHtml(element, html, delay = 10, fun = () => {}) {
       }
       element.innerHTML = content;
    }
-}
+} 
 
 class LinearRandomGenerator {
    constructor(range, maxStep, seed = Date.now()) {

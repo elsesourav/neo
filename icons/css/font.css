@@ -3,14 +3,6 @@
    src: url("../font/CascadiaCode.ttf") format("truetype");
 }
 @font-face {
-   font-family: f1b;
-   src: url("../font/Exo-Bold.ttf") format("truetype");
-}
-@font-face {
-   font-family: f2b;
-   src: url("../font/Oswald-Bold.ttf") format("truetype");
-}
-@font-face {
    font-family: f3;
    src: url("../font/Roboto-Regular.ttf") format("truetype");
 }
@@ -19,28 +11,11 @@
    src: url("../font/AlegreyaSansSC-Bold.ttf") format("truetype");
 }
 @font-face {
-   font-family: f6;
-   src: url("../font/Nunito-Regular.ttf") format("truetype");
-}
-@font-face {
    font-family: f6b;
    src: url("../font/Nunito-Bold.ttf") format("truetype");
 }
 @font-face {
-   font-family: f7;
-   src: url("../font/RobotoSlab-Regular.ttf") format("truetype");
-}
-@font-face {
    font-family: f7b;
    src: url("../font/RobotoSlab-Bold.ttf") format("truetype");
-}
-
-@font-face {
-   font-family: f8b;
-   src: url("../font/JosefinSans-Bold.ttf") format("truetype");
-}
-@font-face {
-   font-family: f9b;
-   src: url("../font/Mali-Bold.ttf") format("truetype");
 }
 

@@ -8,9 +8,6 @@ function setupChats(id) {
       addConversation(message.role, message.parts[0].text, false);
    }
 
-   document.querySelectorAll("pre code").forEach((block) => {
-      hljs.highlightBlock(block);
-   });
    chatScrollBottom();
 }
 
@@ -55,7 +52,7 @@ async function addConversation(type, message, animation = true) {
       if (animation) {
          const newHtml = lastElement.innerHTML;
          lastElement.innerHTML = "";
-         await typeHtml(lastElement, newHtml, 10, chatScrollBottom);
+         await typeHtml(lastElement, newHtml, 5, chatScrollBottom);
       }
    }
    chatScrollBottom()
@@ -101,6 +98,7 @@ async function sendConversationFromAI(inVoice = false) {
 
    const inputText = messageInput.value.trim();
    messageInput.value = "";
+   messageInput.style.height = "min-content";
    if (inputText !== "") {
       addConversation("user", inputText);
       const text = await getResponse(inputText, inVoice);
