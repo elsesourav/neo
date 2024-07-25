@@ -99,7 +99,14 @@ nav .sidebar {
    background: transparent;
    transition: ease 300ms color, ease 300ms background;
 }
-.new-conversation:hover {
+@media (hover: hover) and (pointer: fine) {
+   .new-conversation:hover {
+      color: #00a2ff;
+      background: light-dark(#0002, #fff2);
+      
+   }
+}
+.new-conversation:active {
    color: #00a2ff;
    background: light-dark(#0002, #fff2);
    
@@ -172,14 +179,22 @@ nav .sidebar {
    transition-property: background;
    z-index: 5;
 }
-.history-list li span:hover::after {
-   background: light-dark(#0000002d, #ffffff2d);
-}
 .history-list li i:last-child {
    color: light-dark(#555, #dbd4d4e3);
    transition: color 300ms;
 }
-.history-list li i:last-child:hover {
+@media (hover: hover) and (pointer: fine) {
+   .history-list li span:hover::after {
+      background: light-dark(#0000002d, #ffffff2d);
+   }
+   .history-list li i:last-child:hover {
+      color: #ff0000;
+   }
+}
+.history-list li span:active::after {
+   background: light-dark(#0000002d, #ffffff2d);
+}
+.history-list li i:last-child:active {
    color: #ff0000;
 }
 .history-list li i:first-child {

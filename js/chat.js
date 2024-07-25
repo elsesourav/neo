@@ -76,7 +76,7 @@ function setConversationHistory() {
    for (const id in storage) {
       html =
          `<li>
-         <i class="sbi-grid-view"></i>
+         <i class="sbi-chat"></i>
          <span id="span-${id}" onclick="setupChats(${id})"></span>
          <i class="sbi-delete-forever" onclick="deleteConversation(${id})"></i>
       </li>` + html;
