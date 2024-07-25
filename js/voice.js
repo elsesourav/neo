@@ -103,12 +103,13 @@ recognition.onend = () => {
    console.log("Voice recognition ended.");
 };
 recognition.onresult = (event) => {
-   [...event.results].forEach((result) => {
+   for (let i = 0; i < event.results.length; i++) {
+      const result = event.results[i];
       if (result.isFinal) {
          const voiceText = document.getElementById("voice-text");
          voiceText.value += result[0].transcript + ". ";
       }
-   });
+   }
 };
 
 const startVoiceRecognition = () => {
