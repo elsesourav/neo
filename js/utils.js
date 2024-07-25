@@ -19,6 +19,9 @@ const debounce = (func, delay = 1000) => {
    };
 };
 
+const isMobile =
+   localStorage.mobile || "ontouchstart" in window || navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0;
+
 // create element
 const CE = (tagName, className = [], inrHtml = "", parent = null) => {
    const e = document.createElement(tagName);

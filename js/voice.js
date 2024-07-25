@@ -95,12 +95,12 @@ let isRecognitionRunning = false;
 
 recognition.onstart = () => {
    isRecognitionRunning = true;
-   console.log("start recognition.");
+   // console.log("start recognition.");
 };
 recognition.onend = () => {
    isRecognitionRunning = false;
    stopVoiceRecognition();
-   console.log("Voice recognition ended.");
+   // console.log("Voice recognition ended.");
 };
 recognition.onresult = (event) => {
    for (let i = 0; i < event.results.length; i++) {
@@ -115,7 +115,7 @@ recognition.onresult = (event) => {
 const startVoiceRecognition = () => {
    if (!isRecognitionRunning) {
       stopSpeech();
-      startVolumeDetection();
+      if (!isMobile) startVolumeDetection();
       recognition.start();
    }
 };
