@@ -158,6 +158,8 @@
    transition-duration: 200ms;
    transition-delay: 0;
    transition-timing-function: ease-in-out;
+   backdrop-filter: blur(1px);
+   -webkit-backdrop-filter: blur(1px);
    transition-property: width height background;
    z-index: -2;
 }
@@ -317,4 +319,9 @@
 }
 .voice-view .buttons div[class*="voice-"]:last-child:hover i {
    color: #fff;
+}
+
+
+#temp-for-read {
+   display: none;
 }

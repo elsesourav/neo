@@ -47,6 +47,7 @@ async function addConversation(type, message, animation = true) {
    if (type !== "user") {
       const lastElement = document.getElementById(`message-${id}`);
       lastElement.innerHTML = html;
+      tempForRead.innerText = lastElement.innerText;
       lastElement.querySelectorAll("pre code").forEach((block) => {
          hljs.highlightBlock(block);
       });
@@ -95,14 +96,15 @@ if (storageOldData) {
    setConversationHistory();
 }
 
-async function sendConversationFromAI() {
+async function sendConversationFromAI(isAddHindi = false) {
    const is = storage[currentConversationId];
 
    const inputText = messageInput.value.trim();
    messageInput.value = "";
    if (inputText !== "") {
       addConversation("user", inputText);
-      const text = await getResponse(inputText);
+      const addInputText = isAddHindi? inputText + ". at last add small hindi tips. and don't show `hindi tips` in conversation": inputText;
+      const text = await getResponse(addInputText);
       addConversation("model", text);
 
       // save storage

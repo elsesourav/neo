@@ -8,6 +8,8 @@ const messageInput = document.getElementById("message-input");
 const sendButton = document.getElementById("send-button");
 const voiceButton = document.getElementById("voice-input");
 
+const tempForRead = document.getElementById("temp-for-read");
+
 const voiceView = document.getElementById("voice-view");
 const voiceText = document.getElementById("voice-text");
 const voicePlayButton = document.getElementById("voice-play-button");
@@ -48,12 +50,10 @@ voiceSendButton.addEventListener("click", async () => {
    stopVoiceRecognition();
    messageInput.value = voiceText.value;
    voiceText.value = "";
-   const is = await sendConversationFromAI();
+   const is = await sendConversationFromAI(true);
 
    if (is) {
-      const elements = document.querySelectorAll(".message");
-      const lastElement = elements[elements.length - 1];
-      textToSpeech(lastElement.innerText);
+      textToSpeech(tempForRead.innerText);
    }
 });
 
