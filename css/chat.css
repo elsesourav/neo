@@ -89,6 +89,7 @@ main .chat-box * {
    padding: calc(var(--m) * 1.4) calc(var(--m) * 2);
    gap: calc(var(--m));
    border-radius: var(--m) var(--m) 0 var(--m);
+   color: #fff;
    background: var(--color-primary);
    display: flex;
    flex-direction: column;
