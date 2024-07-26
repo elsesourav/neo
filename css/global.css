@@ -60,7 +60,7 @@
 @media (min-width: 1300px) {
    :root {
       --input-w: calc(var(--s) * 38);
-      --chat-w: 70%;
+      --chat-w: calc(var(--s) * 40);
       --m: 9px;
    }
 }

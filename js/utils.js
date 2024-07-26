@@ -108,7 +108,7 @@ function splitHtmlIntoArray(html) {
       return [item];
    });
 }
- 
+
 async function typeHtml(element, html, delay = 10, fun = () => {}) {
    const array = splitHtmlIntoArray(html);
    let content = "";
@@ -133,7 +133,7 @@ async function typeHtml(element, html, delay = 10, fun = () => {}) {
       }
       element.innerHTML = content;
    }
-} 
+}
 
 class LinearRandomGenerator {
    constructor(range, maxStep, seed = Date.now()) {
@@ -157,28 +157,71 @@ class LinearRandomGenerator {
 
 const linearGen = new LinearRandomGenerator([0, 50], 5);
 
-
 function replaceSpecialPairs(str) {
    const pairs = [
-     /\\\\/g,  // matches \\
-     /\/\//g,  // matches //
-     /\|\|/g,  // matches ||
-     /&&/g,    // matches &&
-     /--/g,    // matches --
-     /:/g,     // matches :
-     /;/g,     // matches ;
-     /"/g,     // matches "
-     /\[/g,    // matches [
-     /]/g,     // matches ]
-     /{/g,     // matches {
-     /}/g      // matches }
+      /\\\\/g, // matches \\
+      /\/\//g, // matches //
+      /\|\|/g, // matches ||
+      /&&/g, // matches &&
+      /--/g, // matches --
+      /:/g, // matches :
+      /;/g, // matches ;
+      /"/g, // matches "
+      /\[/g, // matches [
+      /]/g, // matches ]
+      /{/g, // matches {
+      /}/g, // matches }
    ];
- 
-   pairs.forEach(pair => {
-     str = str.replace(pair, ' ');
+
+   pairs.forEach((pair) => {
+      str = str.replace(pair, " ");
    });
- 
-   str = str.replace(/\s\s+/g, ' ');
+
+   // Define a regular expression to match emojis
+   const emojiRegex =
+      /[\u{1F600}-\u{1F64F}\u{1F300}-\u{1F5FF}\u{1F680}-\u{1F6FF}\u{1F700}-\u{1F77F}\u{1F780}-\u{1F7FF}\u{1F800}-\u{1F8FF}\u{1F900}-\u{1F9FF}\u{1FA00}-\u{1FA6F}\u{1FA70}-\u{1FAFF}\u{2600}-\u{26FF}\u{2700}-\u{27BF}]/gu;
+
+   str = str.replace(emojiRegex, " ");
+   str = str.replace(/\s\s+/g, " ");
 
    return str.trim();
- }
+}
+
+function fallbackCopyTextToClipboard(text) {
+   var textArea = document.createElement("textarea");
+   textArea.value = text;
+
+   // Avoid scrolling to bottom
+   textArea.style.top = "0";
+   textArea.style.left = "0";
+   textArea.style.position = "fixed";
+
+   document.body.appendChild(textArea);
+   textArea.focus();
+   textArea.select();
+
+   try {
+      var successful = document.execCommand("copy");
+      var msg = successful ? "successful" : "unsuccessful";
+      console.log("Fallback: Copying text command was " + msg);
+   } catch (err) {
+      console.error("Fallback: Oops, unable to copy", err);
+   }
+
+   document.body.removeChild(textArea);
+}
+function copyTextToClipboard(e) {
+   const text = e.parentElement.innerText;
+   if (!navigator.clipboard) {
+      fallbackCopyTextToClipboard(text);
+      return;
+   }
+   navigator.clipboard.writeText(text).then(
+      function () {
+         console.log("Async: Copying to clipboard was successful!");
+      },
+      function (err) {
+         console.log("Async: Could not copy text: ", err);
+      }
+   );
+}

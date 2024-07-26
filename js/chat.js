@@ -43,9 +43,11 @@ async function addConversation(type, message, animation = true) {
    if (type !== "user") {
       const lastElement = document.getElementById(`message-${id}`);
       lastElement.innerHTML = html;
-      tempForRead.textContent = lastElement.textContent;
+      tempForRead.value = lastElement.textContent;
+
       lastElement.querySelectorAll("pre code").forEach((block) => {
          hljs.highlightBlock(block);
+         block.innerHTML += `<div class="sbi-content-copy copy" onclick="copyTextToClipboard(this)"></div>`
       });
 
       if (animation) {
@@ -53,6 +55,13 @@ async function addConversation(type, message, animation = true) {
          lastElement.innerHTML = "";
          await typeHtml(lastElement, newHtml, 5, chatScrollBottom);
       }
+
+      // copy code event listeners
+      // lastElement.querySelectorAll("pre code .copy").forEach((block) => {
+      //    block.addEventListener("click", () => {
+      //       copyTextToClipboard(block.parentElement.innerText);
+      //    });
+      // });
    }
    chatScrollBottom();
 }

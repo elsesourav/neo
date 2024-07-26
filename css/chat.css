@@ -134,6 +134,21 @@ main .chat-box * {
    -ms-hyphens: none;
    hyphens: none;
 }
+.message pre code[class*="language-"] .copy {
+   position: absolute;
+   right: 0;
+   top: 0;
+   margin: calc(var(--m) / 2);
+   cursor: var(--cursor);
+   width: var(--s);
+   display: grid;
+   place-items: center;
+   color: #fff;
+   height: var(--s);
+}
+.message pre code[class*="language-"] .copy:active {
+   color: #0f0;
+}
 .message code[class*="language-"] ::-moz-selection,
 .message code[class*="language-"]::-moz-selection,
 .message pre[class*="language-"] ::-moz-selection,
