@@ -156,3 +156,29 @@ class LinearRandomGenerator {
 }
 
 const linearGen = new LinearRandomGenerator([0, 50], 5);
+
+
+function replaceSpecialPairs(str) {
+   const pairs = [
+     /\\\\/g,  // matches \\
+     /\/\//g,  // matches //
+     /\|\|/g,  // matches ||
+     /&&/g,    // matches &&
+     /--/g,    // matches --
+     /:/g,     // matches :
+     /;/g,     // matches ;
+     /"/g,     // matches "
+     /\[/g,    // matches [
+     /]/g,     // matches ]
+     /{/g,     // matches {
+     /}/g      // matches }
+   ];
+ 
+   pairs.forEach(pair => {
+     str = str.replace(pair, ' ');
+   });
+ 
+   str = str.replace(/\s\s+/g, ' ');
+
+   return str.trim();
+ }
