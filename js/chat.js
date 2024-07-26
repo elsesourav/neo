@@ -79,7 +79,7 @@ function setConversationHistory() {
    }
    conversationHistory.innerHTML = html;
    for (const id in storage) {
-      const text = storage[id].messages[1].parts[0].text.trim();
+      const text = storage[id].messages[0].parts[0].text.trim();
       const subText = text.length > 25 ? text.substring(0, 23) + "..." : text;
       const spanIds = document.getElementById(`span-${id}`);
       spanIds.textContent = subText;

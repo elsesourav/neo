@@ -1,5 +1,7 @@
 main {
-   position: relative;
+   position: fixed;
+   top: 0;
+   left: 0;
    width: 100%;
    height: 100%;
    display: flex;
@@ -33,7 +35,8 @@ main header .icon img {
 
 main .scroll {
    position: relative;
-   width: 100%;
+   width: var(--chat-w);
+   margin: 0 auto;
    height: 100%;
    overflow-x: hidden;
    overflow-y: scroll;
@@ -84,7 +87,7 @@ main .chat-box * {
 .chat-box .chat .message {
    position: relative;
    font-size: calc(var(--font-s) * 0.8);
-   max-width: 75%;
+   max-width: 85%;
    padding: calc(var(--m) * 1.4) calc(var(--m) * 2);
    gap: calc(var(--m));
    border-radius: var(--m) var(--m) 0 var(--m);
@@ -92,6 +95,16 @@ main .chat-box * {
    background: var(--color-primary);
    display: flex;
    flex-direction: column;
+}
+@media (max-width: 450px) {
+   .chat-box .incoming {
+      flex-direction: column;
+   }
+   .chat-box .incoming .message {
+      width: fit-content;
+      max-width: 95%;
+      margin-left: calc(var(--m) * 0.8);
+   }
 }
 .chat-box .incoming .message {
    color: light-dark(#333, #ddd);;
@@ -167,8 +180,11 @@ main .chat-box * {
    margin-left: calc(var(--m));
    padding: calc(var(--m) / 4) 0;
 }
+.message strong *,
 .message strong {
    font-family: f6b;
+   font-weight: 700;
+   color: light-dark(#000, #fff);
 }
 .message ul ::marker {
    content: "◆ ";

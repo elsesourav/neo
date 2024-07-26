@@ -6,10 +6,13 @@
 
    --nav-w: 280px;
    --input-h: 60px;
+   --input-w: calc(100% - var(--s) * 2);
    --input-h-max: 300px;
 
    --voice-view-w: 250px;
    --voice-view-h: 300px;
+
+   --chat-w: 100%;
 
    
    --color-primary: linear-gradient(to top left, #6200ff, #8c00ff);
@@ -24,6 +27,44 @@
    --code-dark: #282a38;
    --code-light: #282a38de;
 }
+@media (min-width: 600px) {
+   :root {
+      --nav-w: 300px;
+      --input-w: 80%;
+      --s: 22px;
+      --font-s: 19px;
+      --m: 9px;
+      --chat-w: 98%;
+   }
+}
+@media (min-width: 750px) {
+   :root {
+      --input-w: 75%;
+      --chat-w: 90%;
+   }
+}
+@media (min-width: 900px) {
+   :root {
+      --input-w: 70%;
+      --chat-w: 84%;
+      --m: 9px;
+   }
+}
+@media (min-width: 1100px) {
+   :root {
+      --input-w: 60%;
+      --chat-w: 78%;
+      --m: 9px;
+   }
+}
+@media (min-width: 1300px) {
+   :root {
+      --input-w: calc(var(--s) * 38);
+      --chat-w: 70%;
+      --m: 9px;
+   }
+}
+
 * {
    margin: 0;
    padding: 0;

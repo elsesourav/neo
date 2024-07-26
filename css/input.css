@@ -1,15 +1,17 @@
 .chat-input {
+   --margin: calc(calc(100% - var(--input-w)) / 2);
    position: fixed;
-   width: calc(100% - calc(var(--s) * 2));
+   width: var(--input-w);
    height: auto !important;
    bottom: 0;
    left: 0;
    display: grid;
+   margin: 0 var(--margin);
    grid-template-columns: auto calc(var(--s) * 2) calc(var(--s) * 2.6);
    gap: calc(var(--m));
    justify-items: center;
    align-items: end;
-   margin: var(--s);
+   margin-bottom: var(--s);
    z-index: 4;
 }
 .chat-input::after {
