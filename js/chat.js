@@ -54,7 +54,7 @@ async function addConversation(type, message, animation = true) {
          await typeHtml(lastElement, newHtml, 5, chatScrollBottom);
       }
    }
-   chatScrollBottom()
+   chatScrollBottom();
 }
 
 function deleteConversation(id) {
@@ -110,9 +110,7 @@ async function sendConversationFromAI(inVoice = false) {
       saveLocalStorage();
    }
 
-   if (!is) {
-      setConversationHistory();
-   }
+   if (!is) setConversationHistory();
 
    return true;
 }

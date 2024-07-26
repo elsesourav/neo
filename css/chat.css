@@ -81,7 +81,6 @@ main .chat-box * {
    display: grid;
    place-items: center;
 }
-
 .chat-box .chat .message {
    position: relative;
    font-size: calc(var(--font-s) * 0.8);
