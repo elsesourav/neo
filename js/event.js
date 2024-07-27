@@ -1,5 +1,6 @@
 const menuToggle = document.getElementById("toggle-menu");
 const navBar = document.querySelector("nav");
+const navOutside = document.getElementById("outside");
 const chatSection = document.getElementById("in-out");
 const newConversationButton = document.getElementById("new-conversation");
 const conversationHistory = document.getElementById("conversation-history");
@@ -17,15 +18,16 @@ const voicePauseButton = document.getElementById("voice-pause-button");
 const voiceSendButton = document.getElementById("voice-send-button");
 const voiceCloseButton = document.getElementById("voice-close-button");
 
-menuToggle.addEventListener("click", () => {
-   navBar.classList.toggle("active");
+menuToggle.addEventListener("click", (event) => {
+   document.body.classList.toggle("active-nav");
+   event.stopPropagation();
 });
-chatSection.addEventListener("click", () => {
-   navBar.classList.remove("active");
+navOutside.addEventListener("click", () => {
+   document.body.classList.remove("active-nav");
 });
 
-newConversationButton.addEventListener("click", () => {
-   newConversation();
+newConversationButton.addEventListener("click", (event) => {
+   newConversation(event);
 });
 voiceButton.addEventListener("click", () => {
    voiceView.classList.add("active");
@@ -80,4 +82,12 @@ messageInput.addEventListener("input", ({ target }) => {
    target.style.height = "min-content";
    const height = target.scrollHeight < maxHeight ? target.scrollHeight : maxHeight;
    target.style.height = `${height}px`;
+});
+
+chatSection.addEventListener("scroll", ({ target }) => {
+   if (target.scrollTop + target.clientHeight < target.scrollHeight) {
+      forceScroll = true;
+   } else if (target.scrollTop + target.clientHeight === target.scrollHeight) {
+      forceScroll = false;
+   }
 });

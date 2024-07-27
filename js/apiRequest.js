@@ -1,8 +1,8 @@
 async function getResponse(prompt, isVoice = false) {
    const newPrompt = isVoice ? prompt + additionalText : prompt;
-
    history.push({ role: 'user', parts: [{ text: newPrompt }] });
 
+   
    try {
       const response = await fetch(aiUrl, {
          method: "POST",

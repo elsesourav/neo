@@ -16,31 +16,44 @@ function chatScrollBottom() {
 }
 
 function sendSuggestionMessage(question) {
-   outputChat.innerHTML = "";
    messageInput.value = question;
    sendConversationFromAI();
 }
 
 function addSuggestions() {
    let str = "";
-   let i = 0;
-   for (const key in questions) {
+   let i = Math.floor(Math.random() * 3);
+   const len = Object.keys(questions).length;
+
+   while (i < len) {
+      let key = Object.keys(questions)[i];
       const category = questions[key];
-      const icon = questionIcons[i++];
+      const icon = questionIcons[i];
       const question = category[Math.floor(Math.random() * category.length)];
-      
-      str = `
-         <div class="content" onclick="sendSuggestionMessage('${question}')">
-            <p>${question}</p>
-            <i class="${icon}"></i>
-         </div>
-      ` + str;
+      const s =
+         '<div class="content" onclick="sendSuggestionMessage(' +
+         "`" +
+         question +
+         "`" +
+         ')">' +
+         "<p>" +
+         question +
+         "</p>" +
+         "<i class=" +
+         '"' +
+         icon +
+         '"' +
+         "></i>" +
+         "</div>";
+
+         str = Math.random() > 0.5 ? str + s : s + str;
+
+      i += Math.floor(Math.random() * 3) + 1;
    }
-   setTimeout(() => {
-      if(!outputChat.innerHTML) {
-         outputChat.innerHTML = `<div class="suggestions">${str}</div>`;
-      }
-   }, 3000);
+
+   if (!outputChat.innerHTML) {
+      outputChat.innerHTML = `<div class="suggestions">${str}</div>`;
+   }
 }
 
 function newConversation() {
@@ -82,7 +95,9 @@ async function addConversation(type, message, animation = true) {
       if (animation) {
          const newHtml = lastElement.innerHTML;
          lastElement.innerHTML = "";
-         await typeHtml(lastElement, newHtml, 5, chatScrollBottom);
+         forceScroll = false;
+         const delay = newHtml.length < 100 ? 5 : 1;
+         await typeHtml(lastElement, newHtml, delay, chatScrollBottom);
       }
    }
    chatScrollBottom();
@@ -104,8 +119,8 @@ function setConversationHistory() {
       html =
          `<li>
          <i class="sbi-chat"></i>
-         <span id="span-${id}" onclick="setupChats(${id})"></span>
-         <i class="sbi-delete-forever" onclick="deleteConversation(${id})"></i>
+         <span id="span-${id}" onclick="setupChats(${id}, this)"></span>
+         <i class="sbi-delete-forever" onclick="deleteConversation(${id}, this)"></i>
       </li>` + html;
    }
    conversationHistory.innerHTML = html;

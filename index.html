@@ -15,6 +15,7 @@
       <link rel="stylesheet" href="./css/nav.css" />
       <link rel="stylesheet" href="./css/input.css" />
       <link rel="stylesheet" href="./css/chat.css" />
+      <link rel="stylesheet" href="./css/media.css" />
       <!-- ===============================================================
                                  JavaScript  
       ================================================================= -->
@@ -32,6 +33,7 @@
                            Navigation Section  
       ================================================================= -->
       <nav>
+         <div id="outside"></div>
          <div id="toggle-menu">
             <span></span>
             <span></span>
@@ -74,29 +76,31 @@
                            Chat Section  
          ================================================================= -->
          <div class="scroll" id="in-out">
-            <ul class="chat-box" id="chat-box">
-            </ul>
+            <ul class="chat-box" id="chat-box"></ul>
+         </div>
+
+         <!-- ===============================================================
+                              Input Section  
+         ================================================================= -->
+         <div class="chat-input">
+            <div class="cover">
+               <div class="input-sizer">
+                  <textarea
+                     id="message-input"
+                     placeholder="Enter a message..."
+                     rows="1"
+                  >
+                  </textarea>
+               </div>
+               <div id="send-button">
+                  <i class="sbi-paper-plane-o"></i>
+               </div>
+               <div class="voice-input" id="voice-input">
+                  <i class="sbi-microphone"></i>
+               </div>
+            </div>
          </div>
       </main>
-
-      <!-- ===============================================================
-                           Input Section  
-      ================================================================= -->
-      <div class="chat-input">
-         <div class="input-sizer">
-            <textarea
-               id="message-input"
-               placeholder="Enter a message..."
-               rows="1"
-            ></textarea>
-         </div>
-         <div id="send-button">
-            <i class="sbi-paper-plane-o"></i>
-         </div>
-         <div class="voice-input" id="voice-input">
-            <i class="sbi-microphone"></i>
-         </div>
-      </div>
 
       <div class="voice-view" id="voice-view">
          <div class="voice-icon">

@@ -1,39 +1,31 @@
 .chat-input {
-   --margin: calc(calc(100% - var(--input-w)) / 2);
-   position: fixed;
-   width: var(--input-w);
-   height: auto !important;
-   bottom: 0;
-   left: 0;
+   position: absolute;
+   width: 100%;
+   height: auto;
    display: grid;
-   margin: 0 var(--margin);
+   place-items: center;
+   bottom: 0;
+   right: 0;
+   backdrop-filter: blur(3px);
+   -webkit-backdrop-filter: blur(3px);
+   z-index: 4;
+}
+.chat-input .cover {
+   --margin: calc(calc(100% - var(--input-w)) / 2);
+   position: relative;
+   width: var(--chat-w);
+   height: auto;
+   display: grid;
    grid-template-columns: auto calc(var(--s) * 2) calc(var(--s) * 2.6);
+   margin: 0 var(--margin);
    gap: calc(var(--m));
    justify-items: center;
    align-items: end;
-   margin-bottom: var(--s);
-   z-index: 4;
-}
-.chat-input::after {
-   content: "";
-   position: absolute;
-   width: 200%;
-   bottom: -45%;
-   height: 150%;
-   backdrop-filter: blur(3px);
-   -webkit-backdrop-filter: blur(3px);
-   z-index: -1;
-}
-.chat-input::before {
-   content: "";
-   position: absolute;
-   width: 100%;
-   height: 100%;
    background: light-dark(#f1f1f1, #1a1a1a);
    border-radius: calc(var(--m));
    box-shadow: 0 2px 6px #00000077;
    border: solid 1px #0004;
-   z-index: 1;
+   margin-bottom: var(--s);
 }
 
 .input-sizer {

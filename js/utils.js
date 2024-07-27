@@ -123,10 +123,10 @@ async function typeHtml(element, html, delay = 10, fun = () => {}) {
          for (const char of item) {
             content += char;
             element.innerHTML = content;
-            await wait(delay);
+            if (delay > 3 || i % 3 === 0) await wait(delay);
 
             // for scrolling
-            if (i++ % 30 == 0) {
+            if (i++ % 30 === 0 && !forceScroll) {
                fun();
             }
          }
