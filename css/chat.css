@@ -13,7 +13,7 @@ main header {
    position: relative;
    top: 0;
    width: 100%;
-   height: calc(var(--s) * 2.8);
+   height: var(--header-h);
    padding: 0 calc(var(--s) * 3.4);
    background: var(--color-primary);
    display: flex;
@@ -23,8 +23,8 @@ main header {
 }
 main header .icon {
    position: relative;
-   width: calc(var(--s) * 2.8);
-   height: calc(var(--s) * 2.8);
+   width: var(--header-h);
+   height: var(--header-h);
    display: grid;
    place-items: center;
 }
@@ -41,7 +41,74 @@ main .scroll {
    overflow-x: hidden;
    overflow-y: scroll;
 }
+main .scroll:has( .suggestions) {
+   display: grid;
+   place-items: center;
+}
 
+/* ---------------- chat suggestion -------------- */
+main .scroll .suggestions {
+   position: relative;
+   width: 100%;
+   max-height: calc(100svh - calc(var(--input-h) + var(--header-h) + var(--s)));
+   padding: 0 calc(var(--m));
+   display: flex;
+   flex-wrap: wrap;
+   gap: calc(var(--m) / 2);
+   justify-content: center;
+   align-items: center;
+}
+
+main .scroll .suggestions .content {
+   position: relative;
+   width: calc(var(--card-w) - var(--m));
+   height: calc(var(--card-h) - var(--m));
+   margin: calc(var(--m) / 2);
+   padding: calc(var(--m));
+   border-radius: calc(var(--m));
+   display: grid;
+   background: light-dark(#fff1, #0001);
+   outline: solid 1px light-dark(#0002, #fff2);
+   cursor: var(--cursor);
+   opacity: 1;
+   transition: ease-in-out background 300ms, ease-in-out outline 300ms;
+   animation: suggestionOpacity linear 400ms;
+}
+@keyframes suggestionOpacity {
+   0% {
+      opacity: 0;
+   } 100% {
+      opacity: 1;
+   }
+}
+main .scroll .suggestions .content i {
+   font-size: calc(var(--font-s));
+   text-align: center;
+   color: light-dark(#000, #fff);
+   height: min-content;
+}
+main .scroll .suggestions .content p {
+   font-size: var(--card-font-s);
+   font-family: f6b;
+   color: light-dark(#333, #ccc);
+   transition: ease-in-out color 300ms;
+}
+@media (hover: hover) and (pointer: fine) {
+   main .scroll .suggestions .content:hover {
+      background: light-dark(#fff5, #0005);
+   }
+   main .scroll .suggestions .content:hover p {
+      color: light-dark(#000, #fff);
+   }
+}
+main .scroll .suggestions .content:active {
+   background: light-dark(#fff5, #0005);
+}
+main .scroll .suggestions .content:active p {
+   color: light-dark(#000, #fff);
+}
+
+/* ------------- chat content ----------- */
 main .scroll .chat-box {
    position: relative;
    width: 100%;
@@ -107,7 +174,7 @@ main .chat-box * {
    }
 }
 .chat-box .incoming .message {
-   color: light-dark(#333, #ddd);;
+   color: light-dark(#333, #ddd);
    background: light-dark(#ddda, #0003);
    border-radius: 0 var(--m) var(--m) var(--m);
    outline: solid 1px light-dark(#ddda, #0005);
@@ -169,10 +236,10 @@ main .chat-box * {
       text-shadow: none;
    }
 }
-.message pre[class*="language-"]  {
+.message pre[class*="language-"] {
    overflow: auto;
 }
-.message pre { 
+.message pre {
    background: light-dark(var(--code-light), var(--code-dark));
    border-radius: var(--m);
    outline: solid 1px light-dark(#777, #323232);
@@ -213,18 +280,17 @@ main .chat-box * {
    color: light-dark(#9000ff, #ba60ff);
 }
 
-.message:not( pre) > p {
+.message:not(pre) > p {
    display: inline;
 }
-.message:not( pre) > p * {
+.message:not(pre) > p * {
    display: inline;
    height: min-content;
 }
-.message:not( pre) ul li *,
-.message:not( pre) ol li * {
+.message:not(pre) ul li *,
+.message:not(pre) ol li * {
    display: inline;
 }
-
 
 .message code * {
    font-family: f0;
@@ -283,116 +349,116 @@ main .chat-box * {
 }
 
 .message pre code .hljs-comment {
-   color: #6272A4; 
+   color: #6272a4;
    font-style: italic;
 }
 .message pre code .hljs-punctuation {
-   color: #F8F8F2;
+   color: #f8f8f2;
    font-weight: bold;
 }
 .message pre code .hljs-tag {
-   color: #FFFFFF; 
+   color: #ffffff;
 }
 .message pre code .hljs-tag .hljs-attr {
-   color: #50FA7B; 
+   color: #50fa7b;
    font-style: italic;
 }
 .message pre code .hljs-tag .hljs-name {
-   color: #FF79C6; 
+   color: #ff79c6;
 }
 .message pre code .hljs-attribute {
-   color: #50FA7B; 
+   color: #50fa7b;
    font-style: italic;
 }
 .message pre code .hljs-doctag {
-   color: #BD93F9; 
+   color: #bd93f9;
 }
 .message pre code .hljs-keyword {
-   color: #FF79C6; 
+   color: #ff79c6;
 }
 .message pre code .hljs-meta .hljs-keyword {
-   color: #FF79C6; 
+   color: #ff79c6;
 }
 .message pre code .hljs-name {
-   color: #8BE9FD; 
+   color: #8be9fd;
 }
 .message pre code .hljs-selector-tag {
-   color: #FF79C6; 
+   color: #ff79c6;
 }
 .message pre code .hljs-deletion {
-   color: #FF5555; 
+   color: #ff5555;
 }
 .message pre code .hljs-number {
-   color: #BD93F9; 
+   color: #bd93f9;
 }
 .message pre code .hljs-quote {
-   color: #F1FA8C; 
+   color: #f1fa8c;
    font-style: italic;
 }
 .message pre code .hljs-selector-class {
-   color: #8BE9FD; 
+   color: #8be9fd;
 }
 .message pre code .hljs-selector-id {
-   color: #8BE9FD; 
+   color: #8be9fd;
 }
 .message pre code .hljs-string {
-   color: #F1FA8C; 
+   color: #f1fa8c;
 }
 .message pre code .hljs-template-tag {
-   color: #50FA7B; 
+   color: #50fa7b;
 }
 .message pre code .hljs-type {
-   color: #8BE9FD; 
+   color: #8be9fd;
 }
 .message pre code .hljs-section {
-   color: #BD93F9; 
+   color: #bd93f9;
 }
 .message pre code .hljs-title {
-   color: #BD93F9; 
+   color: #bd93f9;
 }
 .message pre code .hljs-link {
-   color: #8BE9FD; 
+   color: #8be9fd;
    font-style: underline;
 }
 .message pre code .hljs-operator {
-   color: #FF79C6; 
+   color: #ff79c6;
 }
 .message pre code .hljs-regexp {
-   color: #F1FA8C; 
+   color: #f1fa8c;
 }
 .message pre code .hljs-selector-attr {
-   color: #50FA7B; 
+   color: #50fa7b;
 }
 .message pre code .hljs-selector-pseudo {
-   color: #50FA7B; 
+   color: #50fa7b;
 }
 .message pre code .hljs-symbol {
-   color: #BD93F9; 
+   color: #bd93f9;
 }
 .message pre code .hljs-template-variable {
-   color: #BD93F9; 
+   color: #bd93f9;
 }
 .message pre code .hljs-variable {
-   color: #F8F8F2; 
+   color: #f8f8f2;
 }
 .message pre code .hljs-literal {
-   color: #BD93F9; 
+   color: #bd93f9;
 }
 .message pre code .hljs-addition {
-   color: #50FA7B; 
+   color: #50fa7b;
 }
 .message pre code .hljs-built_in {
-   color: #8BE9FD; 
+   color: #8be9fd;
    font-style: italic;
 }
 .message pre code .hljs-bullet {
-   color: #50FA7B; 
+   color: #50fa7b;
 }
 .message pre code .hljs-code {
-   color: #F1FA8C; 
+   color: #f1fa8c;
 }
 .message pre code .hljs-meta {
-   color: #587deb; 
+   color: #587deb;
 }
 
 .message pre code .hljs-emphasis {

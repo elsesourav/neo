@@ -15,8 +15,37 @@ function chatScrollBottom() {
    chatSection.scrollTop = chatSection.scrollHeight;
 }
 
+function sendSuggestionMessage(question) {
+   outputChat.innerHTML = "";
+   messageInput.value = question;
+   sendConversationFromAI();
+}
+
+function addSuggestions() {
+   let str = "";
+   let i = 0;
+   for (const key in questions) {
+      const category = questions[key];
+      const icon = questionIcons[i++];
+      const question = category[Math.floor(Math.random() * category.length)];
+      
+      str = `
+         <div class="content" onclick="sendSuggestionMessage('${question}')">
+            <p>${question}</p>
+            <i class="${icon}"></i>
+         </div>
+      ` + str;
+   }
+   setTimeout(() => {
+      if(!outputChat.innerHTML) {
+         outputChat.innerHTML = `<div class="suggestions">${str}</div>`;
+      }
+   }, 3000);
+}
+
 function newConversation() {
    outputChat.innerHTML = "";
+   addSuggestions();
    history = [];
    currentConversationId = createConversationId();
    messageInput.value = "";
@@ -47,7 +76,7 @@ async function addConversation(type, message, animation = true) {
 
       lastElement.querySelectorAll("pre code").forEach((block) => {
          hljs.highlightBlock(block);
-         block.innerHTML += `<div class="sbi-content-copy copy" onclick="copyTextToClipboard(this)"></div>`
+         block.innerHTML += `<div class="sbi-content-copy copy" onclick="copyTextToClipboard(this)"></div>`;
       });
 
       if (animation) {
@@ -55,13 +84,6 @@ async function addConversation(type, message, animation = true) {
          lastElement.innerHTML = "";
          await typeHtml(lastElement, newHtml, 5, chatScrollBottom);
       }
-
-      // copy code event listeners
-      // lastElement.querySelectorAll("pre code .copy").forEach((block) => {
-      //    block.addEventListener("click", () => {
-      //       copyTextToClipboard(block.parentElement.innerText);
-      //    });
-      // });
    }
    chatScrollBottom();
 }

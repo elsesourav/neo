@@ -21,7 +21,7 @@ async function getResponse(prompt, isVoice = false) {
       history.push({ role: 'model', parts: [{ text: aiMessage }] });
       return aiMessage;
    } catch (error) {
-      console.error("Error:", error);
+      console.dir(error)
    }
 }
 
