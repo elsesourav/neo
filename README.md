@@ -18,18 +18,18 @@
 <table>
   <tr>
     <td>
-      <img src="./src/home.gif">
+      <img src="./src/home.gif" width="500">
     </td>
     <td>
-      <img src="./src/lightDark.gif">
+      <img src="./src/slider.gif" width="500">
     </td>
   </tr>
   <tr>
     <td>
-      <img src="./src/slider.gif">
+      <img src="./src/audio.gif" width="500">
     </td>
     <td>
-      <img src="./src/audio.gif">
+      <img src="./src/lightDark.gif" width="500">
     </td>
   </tr>
 </table>
