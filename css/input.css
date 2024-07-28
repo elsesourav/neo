@@ -27,6 +27,12 @@
    border: solid 1px #0004;
    margin-bottom: var(--s);
 }
+@media (max-width: 500px) {
+   .chat-input .cover {
+      --margin: calc(calc(100% - var(--input-w)) / 2);
+      width: calc(100% - var(--margin) * 2);
+   }
+}
 
 .input-sizer {
    position: relative;

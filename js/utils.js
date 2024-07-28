@@ -125,8 +125,11 @@ async function typeHtml(element, html, delay = 10, fun = () => {}) {
             element.innerHTML = content;
             if (delay > 3 || i % 3 === 0) await wait(delay);
 
+            if (i++ % 20 === 0) {
+               console.log("work");
+            }
             // for scrolling
-            if (i++ % 30 === 0 && !forceScroll) {
+            if (i++ % 20 === 0 && !forceScroll) {
                fun();
             }
          }

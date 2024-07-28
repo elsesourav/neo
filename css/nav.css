@@ -201,9 +201,9 @@ nav .scroll {
    color: light-dark(#555, #dbd4d4e3);
    border-radius: calc(var(--m));
    border: solid 1px light-dark(#fff8, #0008);
-   background: transparent;
    text-decoration: none;
-   transition: ease-in-out 200ms background;
+   background: transparent;
+   transition: 500ms background;
    overflow: hidden;
 }
 @media (hover: hover) and (pointer: fine) {

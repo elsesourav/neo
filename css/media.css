@@ -70,6 +70,6 @@
 }
 @media (min-width: 1300px) {
    :root {
-      --chat-w: 700px;
+      --chat-w: 750px;
    }
 }

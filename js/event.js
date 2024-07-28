@@ -85,9 +85,9 @@ messageInput.addEventListener("input", ({ target }) => {
 });
 
 chatSection.addEventListener("scroll", ({ target }) => {
-   if (target.scrollTop + target.clientHeight < target.scrollHeight) {
+   if (target.scrollTop + target.clientHeight + 20 < target.scrollHeight) {
       forceScroll = true;
-   } else if (target.scrollTop + target.clientHeight === target.scrollHeight) {
+   } else {
       forceScroll = false;
    }
 });
