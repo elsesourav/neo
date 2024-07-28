@@ -129,7 +129,7 @@ main .chat-box * {
    color: light-dark(#111, #fff);
 }
 
-main .scroll .chat-box:not(:has( .chat)) {
+main .scroll .chat-box:not(:has(.chat)) {
    height: 100%;
 }
 
@@ -152,7 +152,7 @@ main .scroll .chat-box .suggestions * {
    -ms-user-select: none;
    -moz-user-select: none;
 }
-main .scroll .chat-box:has( .chat) .suggestions {
+main .scroll .chat-box:has(.chat) .suggestions {
    position: absolute;
    opacity: 0;
    pointer-events: none;
@@ -169,7 +169,8 @@ main .scroll .chat-box .suggestions .content {
    outline: solid 1px light-dark(#0002, #fff2);
    cursor: var(--cursor);
    opacity: 1;
-   transition: ease-in-out background 300ms, ease-in-out outline 300ms, opacity linear 1000ms;
+   transition: ease-in-out background 300ms, ease-in-out outline 300ms,
+      opacity linear 1000ms;
 
    @starting-style {
       opacity: 0;
@@ -203,13 +204,6 @@ main .scroll .chat-box .suggestions .content:active p {
    color: light-dark(#000, #fff);
 }
 
-
-
-
-
-
-
-
 /* -------- color for prompt ---------- */
 .message pre code[class*="language-"] {
    text-shadow: 0 1px #000;
@@ -228,21 +222,27 @@ main .scroll .chat-box .suggestions .content:active p {
    -ms-hyphens: none;
    hyphens: none;
 }
+
+/* ---------------- copy -------------------- */
 .message pre code[class*="language-"] .copy {
    position: absolute;
-   right: 0;
-   top: 0;
-   margin: calc(var(--m) / 2);
+   right: calc(var(--m) / 2);
+   top: calc(var(--m) / 2);
    cursor: var(--cursor);
-   width: var(--s);
+   height: calc(var(--s) * 1.5);
+   width: calc(var(--s) * 1.5);
+   border: solid 1px #0001;
+   border-radius: calc(var(--m));
+   font-size: calc(var(--font-s));
    display: grid;
    place-items: center;
    color: #fff;
-   height: var(--s);
+   background: light-dark(var(--code-light), var(--code-dark));
 }
 .message pre code[class*="language-"] .copy:active {
    color: #0f0;
 }
+/* ------------------------------------------------------- */
 .message code[class*="language-"] ::-moz-selection,
 .message code[class*="language-"]::-moz-selection,
 .message pre[class*="language-"] ::-moz-selection,
@@ -494,6 +494,3 @@ main .scroll .chat-box .suggestions .content:active p {
 .message pre code .hljs-strong {
    font-weight: 900;
 }
-
-
-

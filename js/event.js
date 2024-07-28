@@ -78,16 +78,11 @@ messageInput.addEventListener("keypress", (e) => {
 });
 
 messageInput.addEventListener("input", ({ target }) => {
-   const maxHeight = parseInt(getCssRootValues("--input-h-max").replace("px", ""));
+   const maxHeight = parseInt(
+      getCssRootValues("--input-h-max").replace("px", "")
+   );
    target.style.height = "min-content";
-   const height = target.scrollHeight < maxHeight ? target.scrollHeight : maxHeight;
+   const height =
+      target.scrollHeight < maxHeight ? target.scrollHeight : maxHeight;
    target.style.height = `${height}px`;
-});
-
-chatSection.addEventListener("scroll", ({ target }) => {
-   if (target.scrollTop + target.clientHeight + 20 < target.scrollHeight) {
-      forceScroll = true;
-   } else {
-      forceScroll = false;
-   }
 });

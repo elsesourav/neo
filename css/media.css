@@ -25,18 +25,17 @@
       right: calc(var(--s) * 0);
    }
    body:not(.active-nav) main .scroll {
-      width: calc(var(--chat-w) + var(--s) * 2);
+      width: calc(var(--chat-w) + var(--s) * 6);
    }
 }
 
 @media (min-width: 900px) {
    :root {
-      --font-s: 20px;
       --header-h: calc(var(--s) * 2.2);
-      --chat-w: 620px;
+      --chat-w: 590px;
    }
    body:not(.active-nav) main .scroll {
-      width: var(--chat-w);
+      width: calc(var(--chat-w) + var(--s) * 6);
    }
    nav #toggle-menu {
       width: calc(var(--s) * 1.6);
@@ -63,13 +62,24 @@
       background: #f00;
    }
 }
+@media (min-width: 950px) {
+   :root {
+      --chat-w: 640px;
+   }
+   body:not(.active-nav) main .scroll {
+      width: calc(var(--chat-w) + var(--s) * 4);
+   }
+}
 @media (min-width: 1100px) {
    :root {
-      --chat-w: 650px;
+      --chat-w: 720px;
+   }
+   body:not(.active-nav) main .scroll {
+      width: calc(var(--chat-w));
    }
 }
 @media (min-width: 1300px) {
    :root {
-      --chat-w: 750px;
+      --chat-w: 800px;
    }
 }

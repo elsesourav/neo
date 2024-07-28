@@ -46,7 +46,7 @@ function addSuggestions() {
          "></i>" +
          "</div>";
 
-         str = Math.random() > 0.5 ? str + s : s + str;
+      str = Math.random() > 0.5 ? str + s : s + str;
 
       i += Math.floor(Math.random() * 3) + 1;
    }
@@ -58,6 +58,7 @@ function addSuggestions() {
 
 function newConversation() {
    outputChat.innerHTML = "";
+   startTyping = false;
    addSuggestions();
    history = [];
    currentConversationId = createConversationId();
@@ -95,12 +96,14 @@ async function addConversation(type, message, animation = true) {
       if (animation) {
          const newHtml = lastElement.innerHTML;
          lastElement.innerHTML = "";
-         forceScroll = false;
+         startTyping = true;
          const delay = newHtml.length < 100 ? 5 : 1;
          await typeHtml(lastElement, newHtml, delay, chatScrollBottom);
+         startTyping = false;
       }
+   } else {
+      chatScrollBottom();
    }
-   chatScrollBottom();
 }
 
 function deleteConversation(id) {

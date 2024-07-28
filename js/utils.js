@@ -117,24 +117,25 @@ async function typeHtml(element, html, delay = 10, fun = () => {}) {
    let i = 1;
 
    for (const item of array) {
-      if (item.startsWith("<") && item.endsWith(">")) {
-         content += item;
-      } else {
-         for (const char of item) {
-            content += char;
-            element.innerHTML = content;
-            if (delay > 3 || i % 3 === 0) await wait(delay);
-
-            if (i++ % 20 === 0) {
-               console.log("work");
-            }
-            // for scrolling
-            if (i++ % 20 === 0 && !forceScroll) {
-               fun();
+      if (startTyping) {
+         if (item.startsWith("<") && item.endsWith(">")) {
+            content += item;
+         } else {
+            for (const char of item) {
+               content += char;
+               element.innerHTML = content;
+               if (delay > 3 || !(i % 5)) await wait(delay);
+   
+               // for scrolling
+               if (!(i % 20)) {
+                  console.log("work");
+                  fun();
+               }
+               i++;
             }
          }
+         element.innerHTML = content;
       }
-      element.innerHTML = content;
    }
 }
 
