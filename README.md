@@ -34,7 +34,7 @@
 > - Ensuring all UI components adapt to theme changes dynamically and correctly.
 
 ## `Screenshot`
-<table>
+<table align="center">
   <tr>
     <td>
       <img src="./src/home.gif" width="300">
