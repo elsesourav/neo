@@ -37,18 +37,18 @@
 <table>
   <tr>
     <td>
-      <img src="./src/home.gif" width="500">
+      <img src="./src/home.gif" width="300">
     </td>
     <td>
-      <img src="./src/slider.gif" width="500">
+      <img src="./src/slider.gif" width="300">
     </td>
   </tr>
   <tr>
     <td>
-      <img src="./src/audio.gif" width="500">
+      <img src="./src/audio.gif" width="300">
     </td>
     <td>
-      <img src="./src/lightDark.gif" width="500">
+      <img src="./src/lightDark.gif" width="300">
     </td>
   </tr>
 </table>
