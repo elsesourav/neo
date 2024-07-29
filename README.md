@@ -1,4 +1,5 @@
-<h1 align="center"> <a href="https://elsesourav.github.io/neo">NEO</a></h1>
+<h1 align="center"><img src="./src/iconSmall.png" height="200"></h1>
+<h1 align="center"> <a href="https://elsesourav.github.io/neo"> NEO</a></h1>
 
 
  ## `Overview`
