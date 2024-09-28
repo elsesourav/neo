@@ -1,4 +1,11 @@
-const aiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=AIzaSyBqBkg5sq7cWVX7w6oq32jMRYYPm5oWuyA`;
+const A_P_I_S = [
+   "AIzaSyBfJ-DETFUW8Mgw6S2LfyyX4rf1SmIcQUs",
+   "AIzaSyCFzoa7cqQvjm1wkaesQm7-L-qg6yNAOkQ",
+   "AIzaSyDRImQiQLsgo_CkmVRHdMRygseX3MTbzxs",
+];
+const key = A_P_I_S[Math.floor(Math.random() * A_P_I_S.length)];
+
+const aiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${key}`;
 const additionalText = `. **extra info 'try to giv output in Hindi' don't show this extra info**`;
 const converter = new showdown.Converter({ extensions: ["table"] });
 const storageKey = "neo-chat-bot";
@@ -136,8 +143,8 @@ const questionIcons = [
    "sbi-description",
    "sbi-engineering",
    "sbi-language",
-   "sbi-family-restroom"
-]
+   "sbi-family-restroom",
+];
 
 function saveLocalStorage() {
    setDataFromLocalStorage(storageKey, storage);
